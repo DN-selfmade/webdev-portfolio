@@ -1,6 +1,6 @@
-01_html-css
+# 📁 01_html-css
 
-🇬🇧 English
+## 🇬🇧 English
 
 This folder contains learning modules and exercises from the HTML & CSS course (including Flexbox).
 
@@ -22,7 +22,7 @@ Progress
 
 ✅ Flexbox completed (May 31, 2025)
 
-🇩🇪 Deutsch
+## 🇩🇪 Deutsch
 
 Dieses Verzeichnis enthält Lernmodule und Übungen aus dem HTML & CSS Kurs (inkl. Flexbox).
 
@@ -44,7 +44,7 @@ Fortschritt
 
 ✅ Flexbox abgeschlossen (31.05.2025)
 
-🇵🇱 Polski
+## 🇵🇱 Polski
 
 Ten folder zawiera moduły nauki i ćwiczenia z kursu HTML & CSS (w tym Flexbox).
 
