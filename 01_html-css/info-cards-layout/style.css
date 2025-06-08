@@ -1,0 +1,85 @@
+/* Base Setup */
+
+* {box-sizing: border-box;} 
+
+html {
+    font-size: 0.625em; /* 1rem = 10px */
+}
+
+body {
+  font-family: system-ui, sans-serif;
+  line-height: 1.6;
+  margin: 0;
+  padding: 0;
+  background-color: #b9b9b9;
+  color: #333;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+ /* layout */
+
+.page-header {
+  font-size: 1.6rem;
+  border: 2px solid #333;
+  border-radius: 3px;
+  margin: 2rem 2rem 0 2rem;
+  background-color: aquamarine;
+  text-align: center;
+}
+
+.page-header p {
+  font-style: italic;
+  font-weight: 600;
+
+}
+
+.card-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.card {
+  display: block;
+  border: 2px solid #333;
+  border-radius: 2px;
+  margin: 2rem;
+  padding: 2rem;
+  font-size: 1.6rem;
+  background: linear-gradient(180deg, rgba(0, 255, 98, 0.2), rgba(0, 0, 255, 0.2));
+  width: 30rem;
+  height: 30rem;
+}
+
+.card__icon {
+  font-size: 10rem;
+  text-align: center;
+}
+
+.card__title {
+  margin: 0 0 0 0;
+  border-bottom: 2px dotted #333;
+  padding-left: 2rem;
+}
+
+.card__text {
+  font-style: italic;
+  margin: 0.8rem 0 0 0;
+}
+
+ 
+/* 
+ * Optional: Responsive Layout for small screens.
+ * Not used here, as fixed card size is preferred.
+
+@media (max-width: 768px) {
+  .card {
+    width: 90%;
+    height: auto;
+  }
+} */
