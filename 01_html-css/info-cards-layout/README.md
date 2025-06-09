@@ -1,6 +1,10 @@
-## [🔗 Live-Demo](https://dn-selfmade.github.io/webdev-portfolio/01_html-css/info-cards-layout/)
-
 # 🧩 Info Cards Layout
+
+## 🔗 Live-Demo
+
+👉 [Watch now!](https://dn-selfmade.github.io/webdev-portfolio/01_html-css/info-cards-layout/)
+
+---
 
 ## 🇬🇧 English  
 A responsive info-card layout built using semantic HTML and CSS Flexbox. This project demonstrates clean structure, BEM-style class naming, and mobile-first responsiveness.
