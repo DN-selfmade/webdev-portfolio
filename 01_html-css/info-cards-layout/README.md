@@ -3,6 +3,7 @@
 ## 🔗 Live-Demo
 
 👉 [Watch now!](https://dn-selfmade.github.io/webdev-portfolio/01_html-css/info-cards-layout/)
+_(Opens in the same tab – GitHub Pages limitation)_
 
 ---
 
