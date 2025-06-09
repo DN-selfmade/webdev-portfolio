@@ -1,0 +1,181 @@
+/* Base Setup */
+
+* {box-sizing: border-box;} 
+
+html {
+    font-size: 0.625em; /* 1rem = 10px */
+}
+
+body {
+  font-family: system-ui, sans-serif;
+  line-height: 1.6;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  background-image: 
+    linear-gradient(90deg, rgba(0, 0, 0, 0.5) 4%, rgba(0, 0, 0, 0.1) 10%, rgba(0, 0, 0, 0.1) 90%, rgba(0, 0, 0, 0.5) 96%),
+    linear-gradient(180deg, rgba(0, 0, 0, 0.7) 10%, rgba(0, 0, 0, 0.1) 20%, rgba(0, 0, 0, 0.1) 90%, rgba(0, 0, 0, 0.5) 96%),
+    url(lib/background.jpg);
+    
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center center;
+  
+  --primary-color: #f8f8f8;
+  color: var(--primary-color);
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Layout */
+
+/* Page - Header */
+
+.page {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+ /* content Block */
+.content__page {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+}
+ /* container for page head */
+.page__header {
+    display: flex;
+    justify-content: space-between;
+    flex-grow: 0 1;
+}
+
+.header__navbar {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    list-style: none;
+    gap: 1rem;
+    margin-right: 1rem;
+}
+
+.navbar__li{
+    position: relative;
+    font-size: 2.2rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15rem;
+}
+
+.navbar__li a {
+    text-decoration: none;
+    color: var(--primary-color);
+    display: inline-block;
+    padding: 0 1rem;
+
+    will-change: transform;
+    transition: color 0.3s ease, transform 0.3s ease, font-weight 0.3s ease;
+}
+
+
+.navbar__li--selected a {
+    font-size: 2.8rem;
+    font-weight: bold;
+    color: #a8a8a8;
+}
+
+.navbar__li--selected a:hover,
+.navbar__li a:hover {
+    color: #a8a8a8;
+    transform: scale(1.05);
+}
+
+
+.header__logo {
+    height: 7rem;
+    margin: 2rem 0 0 3rem;
+}
+
+/* Page-Content */
+
+
+.button {
+    display: inline-block;
+    text-decoration: none;
+    color: var(--primary-color);
+    font-size: 2.2rem;
+    border: 2px solid var(--primary-color);
+    border-radius: 999999px;
+    padding: 0 2rem 0.3rem 2rem;
+    text-transform: lowercase;
+    letter-spacing: 0.1rem;
+
+    will-change: transform;
+    transition: color 0.3s ease, transform 0.3s ease, border-color 0.3s ease;
+}
+
+.button:hover {
+    color: #a8a8a8;
+    border-color: #a8a8a8;
+    transform: scale(1.05);
+}
+/* "learn more"-button container */
+.content__button {
+    display: grid;
+}
+/* "learn more"-button */
+.button__content {
+    justify-self: right;
+    margin-right: 5rem;
+}
+/* Container for our H1 and descrpition*/
+.content {
+    width: 45%;
+    margin-left: 5rem;
+    justify-self: center;
+    
+}
+
+.content__h1 {
+    font-size: 4.6rem;
+    margin-bottom: 0;
+    margin-top: 5rem;
+    letter-spacing: 0.4rem;
+}
+
+.content__description {
+    font-size: 1.5rem;
+    font-style: italic;
+}
+ /*Sign button in our footer*/
+.button__sign {
+    font-weight: bold;
+    margin-bottom: 5rem;
+    margin-left: 5rem;
+    padding-left: 3rem;
+    padding-right: 3rem;
+}
+
+    /* responsive part */
+
+@media (max-width: 828px) {
+  .header__navbar {
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    font-size: 1.6rem;
+  }
+
+  .content {
+    width: 90%;
+    margin: 2rem auto;
+  }
+
+  .button__content {
+    justify-self: center;
+    margin: 2rem auto;
+  }
+}
