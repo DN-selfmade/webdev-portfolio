@@ -1,0 +1,9 @@
+/* Base Setup */
+
+* {box-sizing: border-box;} 
+
+html {
+    font-size: 0.625em; /* 1rem = 10px */
+}
+
+/* Layout */
