@@ -9,6 +9,51 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    
+    <div class="page">
+        <header class="page__header">
+            <div class="header__content">
+                <h1 class="header__h1">A mini project about highlighted cards</h1>
+                <p class="header__p">
+                    In this small project, you can see how I used HTML and BEM-based CSS to build Flexbox cards, including a highlighted one.
+                    I applied Flexbox layout, keyframe animations, and hover effects.
+                </p>
+            </div>
+        </header>
+        <section class="page__content">
+            <div class="content__card">
+                <div class="card__background"></div>
+                <h2 class="card__title">Info cards layout</h2>
+                <p class="card__highlight">NEW!</p>
+                <p class="card__content">You can klick on this button too see another project.</p>
+                <a href="../info-cards-layout/" target="_blank" class="card__button">Click me!</a>
+            </div>
+            <div class="content__card card--highlighted">
+                <div class="card__background"></div>
+                <h2 class="card__title">This is a highlighted-card</h2>
+                <p class="card__highlight card__highlight--on">NEW!</p>
+                <p class="card__content">You can klick on this button too see this project in a new tab.</p>
+                <a href="#" target="_blank" class="card__button">Click me!</a>
+            </div>
+            <div class="content__card">
+                <div class="card__background"></div>
+                <h2 class="card__title">Landing page</h2>
+                <p class="card__highlight">NEW!</p>
+                <p class="card__content">You can klick on this button too see another project.</p>
+                <a href="../landing-page/" target="_blank" class="card__button">Click me!</a>
+            </div>
+            <div class="content__card">
+                <div class="card__background"></div>
+                <h2 class="card__title">Product cards with hover</h2>
+                <p class="card__highlight">NEW!</p>
+                <p class="card__content">You can klick on this button too see another project.</p>
+                <a href="../product-cards-with-hover/" target="_blank" class="card__button">Click me!</a>
+            </div>
+        </section>
+        <footer class="page__footer">
+            <div class="footer__content">
+                <small>&copy; 2025 Dawid Nowak</small>
+            </div>
+        </footer>
+    </div>
 </body>
 </html>
