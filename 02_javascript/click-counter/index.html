@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Click counter</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+</head>
+<body>
+    <div class="page">
+        <header class="page__header">
+            <h1 class="header__h1">Click counter</h1>
+            <hr class="header__hr">
+            <p class="header__p">
+                This is a Click counter, you can click "Count" to improve the counter by "1" or reset the counter by clicking the "Reset"-Button.<br>
+                My Click counter don't save any click counts, so if you reload this page it would reset.<br>
+                Have fun by clicking!
+            </p>
+        </header>
+        <hr class="page__hr">
+        <section class="page__content">
+            <h2 class="content__h2">Counter is by:</h2>
+            <p class="content__count" id="output">0</p>
+            <div class="content__buttons">
+                <button class="content__button" id="count">Click!</button>
+                <button class="content__button" id="reset">Reset!</button>
+            </div>
+        </section>
+        <hr class="page__hr">
+        <footer class="page__footer">
+            <small class="footer__copyright">2025 &copy; Dawid Nowak</small>
+        </footer>
+    </div>
+</body>
+</html>
