@@ -1,9 +1,13 @@
 /* Base Setup */
 * { box-sizing: border-box; }
 
-html { font-size: 0.625em; }
+html { 
+    font-size: 0.625em; 
+    touch-action: manipulation; /* was before at .content__button but wasn't good enough */
 
+}
 
+:root { --vh: 1vh; }
 
 /* Layout */
 
@@ -11,7 +15,7 @@ body {
     margin: 0;
     background: radial-gradient( rgb(0, 0, 136), rgb(0, 0, 255));
     background-repeat: no-repeat;
-    min-height: 100vh;
+    min-height: calc(var(--vh, 1vh) * 100);
     --primary__font: #eaeaea;
     --primary__h1: #00FFFF;
     --primary__button: #00bFFF;
@@ -72,7 +76,7 @@ body {
     border-radius: 1rem;
     box-shadow: 0.2rem 0.2rem 0.2rem rgba(0, 0, 0, 0.5);
     font-weight: bold;
-    touch-action: manipulation; /* should deactivate ZOOM-effect on mobile */
+    
 }
 
 .content__count {
