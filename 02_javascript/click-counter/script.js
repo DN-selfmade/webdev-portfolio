@@ -1,13 +1,15 @@
 "use strict"
+const isMobile = /Mobi|Android/i.test(navigator.userAgent);
+if (isMobile) {
+  const setVhUnit = () => {
+    let vh = window.innerHeight * 0.01;
+    document.documentElement.style.setProperty('--vh', `${vh}px`);
+  };
 
-const setVhUnit = () => {
-  let vh = window.innerHeight * 0.01;
-  document.documentElement.style.setProperty('--vh', `${vh}px`);
-};
-
-window.addEventListener('resize', setVhUnit);
-window.addEventListener('orientationchange', setVhUnit);
-setVhUnit();
+  window.addEventListener('resize', setVhUnit);
+  window.addEventListener('orientationchange', setVhUnit);
+  setVhUnit();
+}
 
 
 document.addEventListener ("DOMContentLoaded",  () => {
