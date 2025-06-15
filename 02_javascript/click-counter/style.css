@@ -9,7 +9,7 @@ body {
     margin: 0;
     background: radial-gradient( rgb(0, 0, 136), rgb(0, 0, 255));
     background-repeat: no-repeat;
-    height: 100vh;
+    min-height: 100vh;
     --primary__font: #eaeaea;
     --primary__h1: #00FFFF;
     --primary__button: #00bFFF;
