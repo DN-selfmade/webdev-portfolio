@@ -4,22 +4,77 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>To-Do list</title>
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../to-do/webfonts/Montserrat.css">
+    
 </head>
 <body class="page">
     <header class="page__header">
-        <h1 class="header__h1">To-Do's</h1>
+        <h1 class="header__h1"><img src="../to-do/icons/list-solid.svg" class="header__logo">To-Do's</h1>
         <p class="header__p">
             Welcome to my To-Do list – where customization is allowed!<br>
             Just type your task in the field below and hit "Enter" to add it.
         </p>
     </header>
     <section class="page__content">
-        <form class="content__textinput">
-            <input type="text" name="Task" id="js-task-input" placeholder="Add a Task....">
-        </form>
         <div class="content__tasks">
-            <ul class="tasks__list"></ul>
-            <ul class="tasks__list tasks__list--done"></ul>
+            <div class="tasks__list">
+                <form class="content__textinput">
+                    <input type="text" name="Task" id="js-task-input" placeholder="Add a Task....">
+                </form>
+                <ul class="tasks__list--heading">
+                    <li class="tasks__item">
+                        <i class="tasks__item__checkbox">
+                            <svg class="checkbox__svg" viewBox="0 0 448 512" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M400 32H48C21.49 32 0 53.49 0 80v352c0 26.51 21.49 48 48 48h352c26.51 0 48-21.49
+                                        48-48V80c0-26.51-21.49-48-48-48zm0 400H48V80h352v352z"/>
+                            </svg>
+
+                        </i>
+                        <p class="tasks__item__text">
+                            Erster Task
+                        </p>
+                        <p class="tasks__item__delete">
+                            &#10006;
+                        </p>
+                    </li>
+                    <li class="tasks__item">
+                        <i class="tasks__item__checkbox">
+                            <svg class="checkbox__svg" viewBox="0 0 448 512" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M400 32H48C21.49 32 0 53.49 0 80v352c0 26.51 21.49 48 48 48h352c26.51 0 48-21.49
+                                        48-48V80c0-26.51-21.49-48-48-48zm0 400H48V80h352v352z"/>
+                            </svg>
+
+                        </i>
+                        <p class="tasks__item__text">
+                            Erster Task
+                        </p>
+                        <p class="tasks__item__delete">
+                            &#10006;
+                        </p>
+                    </li>
+                </ul>
+            </div>
+            <h2 class="tasks__done__h2">These tasks are done:</h2>
+            <ul class="tasks__list tasks__list--done"><li class="tasks__item">
+                    <i class="tasks__item__checkbox">
+                        <svg class="checkbox__svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" fill="currentColor">
+                            <path d="M400 32H48C21.5 32 0 53.5 0 80v352c0 26.5 21.5 48 48 
+                                    48h352c26.5 0 48-21.5 48-48V80c0-26.5-21.5-48-48-48zm-43.8 
+                                    130.8l-184 184c-4.7 4.7-12.3 4.7-17 0l-104-104c-4.7-4.7-4.7-12.3 
+                                    0-17l28.3-28.3c4.7-4.7 12.3-4.7 17 0L176 270.1l150.5-150.5c4.7-4.7 
+                                    12.3-4.7 17 0l28.3 28.3c4.7 4.7 4.7 12.3 0 17z"/>
+                        </svg>
+
+                    </i>
+                    <p class="tasks__item__text">
+                        Erledigter Task
+                    </p>
+                    <p class="tasks__item__delete">
+                        &#10006;
+                    </p>
+                </li></ul>
         </div>
     </section>
     <footer class="page__footer">

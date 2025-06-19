@@ -1,0 +1,202 @@
+/* Basic Setup */
+* {box-sizing: border-box;}
+
+html {
+    font-size: 0.625em;
+}
+
+/* variables */
+
+:root {
+    --backgroundColor: #c9c9c9;
+
+    --primary: #3b82f6;
+    --primary-hover: #2563eb;
+
+    --danger:  #ef4444;
+    --danger-hover:  #dc2626;
+
+    --secondary:  #f1f5f9;
+    --secondary-hover: #e2e8f0;
+
+    --font-family: 'Montserrat', sans-serif;
+    --font-color: black;
+}
+
+/* Layout */
+
+.page {
+    background-color: var(--backgroundColor);
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    margin: 0;
+    height: 100vh;
+    width: 100vw;
+    font-size: 1.4rem;
+    font-family: var(--font-family)
+}
+.checkbox__svg {
+    width: 1.4em;
+    color: var(--primary);
+}
+
+.page__header {
+    width: 80%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: var(--font-color);
+}
+
+.header__h1 {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    
+}
+
+
+.header__logo {
+    margin: 0;
+    padding: 0;
+    display: inline-block;
+    width: 3rem;
+}
+
+.header__p {
+    text-align: center;
+    font-style: italic;
+}
+
+.page__content {
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    color: var(--font-color);
+}
+
+.content__textinput {
+    width: 100%;
+}
+
+#js-task-input {
+    width: 100%;
+    padding: 1.5rem;
+    font-size: 1.6rem;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: 0.2rem solid black;
+}
+
+#js-task-input::placeholder {
+    font-style: italic;
+}
+
+.content__tasks {
+    margin: 0;
+
+}
+
+.tasks__list {
+    margin: 0;
+    padding: 0;
+    border: 0.2rem solid black;
+    border-radius: 1rem;
+    overflow: hidden;
+
+    box-shadow: 0.3rem 0.3rem 0.3rem rgba(0, 0, 0, 0.5);
+}
+
+.tasks__list--heading {
+    margin: 0;
+    padding: 0;
+}
+
+.tasks__list--done {
+    border-radius: 1rem;
+}
+
+.tasks__list--done .tasks__item__text {
+    text-decoration: line-through;
+    font-style: italic;
+}
+
+.tasks__done__h2 {
+    text-align: center;
+    margin-top: 3rem;
+}
+
+
+.tasks__item {
+    border-bottom: 0.1rem solid lightgrey;
+    margin: 0;
+    list-style: none;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    gap: 1rem;
+    background-color: var(--secondary);
+    padding: 0 1rem;
+    width: 100%;
+}
+
+.tasks__item__text {
+    word-break: break-word;
+    overflow-wrap: break-word;
+    font-size: 1.8rem;
+}
+
+.tasks__item__checkbox {
+    padding: 0.5rem;
+}
+
+.tasks__item__delete {
+    font-size: 2rem;
+    padding: 0.5rem;
+    color: var(--danger);
+}
+
+.tasks__item:hover {
+    background-color: var(--secondary-hover);
+}
+
+.tasks__item:hover .checkbox__svg {
+    color: var(--primary);
+}
+
+.tasks__item__checkbox:hover {
+    cursor: pointer;
+}
+
+.tasks__item__checkbox:hover .checkbox__svg {
+    color: var(--primary-hover);
+}
+
+.tasks__item:hover .tasks__item__delete {
+    color: var(--danger);
+}
+
+.tasks__item:hover .tasks__item__delete:hover {
+    cursor: pointer;
+    color: var(--danger-hover);
+}
+
+.page__footer {
+    width: 100%;
+    justify-self: flex-end;
+    text-align: center;
+    padding: 3rem;
+    color: var(--font-color);
+}
+
+@media (hover: hover) {
+    .checkbox__svg {
+        color: var(--font-color);
+    }
+    .tasks__item__delete {
+        color: var(--font-color);
+    }
+}
