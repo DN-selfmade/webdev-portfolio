@@ -143,10 +143,21 @@ html {
     width: 100%;
 }
 
+.tasks__item--empty {
+    display: flex;
+    justify-content: center;
+}
+
 .tasks__item__text {
     word-break: break-word;
     overflow-wrap: break-word;
     font-size: 1.8rem;
+}
+
+.tasks__item__text--empty {
+    text-align: center;
+    font-weight: bold;
+    font-style: italic;
 }
 
 .tasks__item__checkbox {
@@ -191,6 +202,35 @@ html {
     padding: 3rem;
     color: var(--font-color);
 }
+
+.tasks__done {
+    display: flex;
+    flex-direction: column;
+}
+
+#done__button {
+    background-color: var(--primary);
+    padding: 0.8rem;
+    border: 0.4rem solid var(--primary-hover);
+    border-radius: 1rem;
+    box-shadow: 0.4rem 0.4rem 0.4rem rgba(0, 0, 0, 0.5);
+    margin: 2rem auto 0  auto;
+    color: var(--secondary);
+    font-weight: bold;
+    will-change: transform;
+    transition: transform 0.3s ease-in-out;
+}
+
+#done__button:hover {
+    cursor: pointer;
+    transform: scale(1.03);
+}
+
+.done__button--clicked {
+    background-color: var(--primary-hover) !important;
+    box-shadow: none !important;
+}
+
 
 @media (hover: hover) {
     .checkbox__svg {
