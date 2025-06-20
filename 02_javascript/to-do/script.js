@@ -25,6 +25,88 @@ const clearButton = document.getElementById("done__button");
 
 
 /**
+ * starts loading tasks when DOM is loaded.
+ */
+document.addEventListener("DOMContentLoaded", () => {
+  loadTasksFromLocalStorage();
+});
+
+/**
+ * extract tasks out of the DOM and saves them on localstorage.
+ */
+function saveTasksToLocalStorage() {
+  const openTasks = document.querySelectorAll(".tasks__list--heading .tasks__item");
+  const doneTasks = document.querySelectorAll(".tasks__list--done .tasks__item");
+
+  const tasks = [];
+
+  openTasks.forEach(task => {
+    const text = task.querySelector(".tasks__item__text")?.innerText.trim();
+    if (text) {
+      tasks.push({ text, done: false });
+    }
+  });
+
+  doneTasks.forEach(task => {
+    const text = task.querySelector(".tasks__item__text")?.innerText.trim();
+    if (text && !task.classList.contains("tasks__item--empty")) {
+      tasks.push({ text, done: true });
+    }
+  });
+
+  localStorage.setItem("tasks", JSON.stringify(tasks));
+};
+
+/**
+ * load tasks from localstorage.
+ */
+function loadTasksFromLocalStorage() {
+  const data = localStorage.getItem("tasks");
+  if (!data) return;
+
+  const tasks = JSON.parse(data);
+  tasks.forEach(task => {
+    createTaskItem(task.text, task.done);
+  });
+
+  placeholder();
+};
+
+/**
+ *  Creating task-items out of the localstorage
+ */
+function createTaskItem(text, isDone = false) {
+  const liElement = document.createElement("li");
+  const iElement = document.createElement("i");
+  const pContentElement = document.createElement("p");
+  const pDeleteElement = document.createElement("p");
+
+  liElement.classList.add("tasks__item");
+
+  iElement.classList.add("tasks__item__checkbox");
+  iElement.dataset.state = isDone ? "checked" : "empty";
+  iElement.innerHTML = isDone ? checkboxChecked : checkboxEmpty;
+
+  pContentElement.classList.add("tasks__item__text");
+  pContentElement.innerText = text;
+
+  pDeleteElement.classList.add("tasks__item__delete");
+  pDeleteElement.innerHTML = "&#10006;";
+
+  liElement.append(iElement, pContentElement, pDeleteElement);
+
+  const targetList = isDone
+    ? document.querySelector(".tasks__list--done")
+    : document.querySelector(".tasks__list--heading");
+
+  targetList.appendChild(liElement);
+
+  applyDeleteButton(pDeleteElement);
+  toggleTaskState(iElement);
+};
+
+
+/**
  * This function change by hover the checkbox icon on open tasks.
  */
 function applyCheckboxHover() {
@@ -57,7 +139,8 @@ function applyDeleteButton(deleteButton) {
         
         if (doneList.length === 0) {
             placeholder()
-        }        
+        };
+        saveTasksToLocalStorage();
     });
 };
 
@@ -75,15 +158,20 @@ function toggleTaskState(checkbox) {
     if (isDone) {
       checkbox.innerHTML = checkboxEmpty;
       openList.appendChild(sourceLi);
+      saveTasksToLocalStorage();
     } else {
       checkbox.innerHTML = checkboxChecked;
       doneList.appendChild(sourceLi);
+      saveTasksToLocalStorage();
     }
 
     placeholder();
   });
 }
 
+/**
+ * creates or remove a placeholder for "done"-Tasks if its empty.
+ */
 
 function placeholder() {
   const doneList = document.querySelector(".tasks__list--done");
@@ -146,6 +234,7 @@ document.addEventListener("keydown", (event) => {
 
         taskInput.value = "";
         applyCheckboxHover()
+        saveTasksToLocalStorage();
     }
 });
 
@@ -176,5 +265,6 @@ clearButton.addEventListener("click", () => {
     setTimeout(() => {
         clearButton.classList.remove("done__button--clicked");
     }, 100);
+    saveTasksToLocalStorage();
 });
 
