@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do list</title>
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../to-do/webfonts/Montserrat.css">
+    <link rel="icon" href="../to-do/icons/list-solid.svg" type="image/x-icon">
+
+    <script src="script.js" defer></script>
+    
+</head>
+<body class="page">
+    <header class="page__header">
+        <h1 class="header__h1"><img src="../to-do/icons/list-solid.svg" class="header__logo">To-Do's</h1>
+        <p class="header__p">
+            Welcome to my To-Do list – where customization is allowed!<br>
+            Just type your task in the field below and hit "Enter" to add it.
+        </p>
+    </header>
+    <section class="page__content">
+        <div class="content__tasks">
+            <div class="tasks__list">
+                <form class="content__textinput">
+                    <input type="text" name="Task" id="js-task-input" placeholder="Add a Task....">
+                </form>
+                <ul class="tasks__list--heading">
+                </ul>
+            </div>
+            <div class="tasks__done">
+                <h2 class="tasks__done__h2">These tasks are done:</h2>         
+                <ul class="tasks__list tasks__list--done">
+                    <li class="tasks__item tasks__item--empty">
+                        <p class="tasks__item__text--empty">
+                            Your "done"-list is empty!
+                        </p>
+                    </li>
+                </ul>
+                <button id="done__button">clear "done"-list</button>
+            </div>
+        </div>
+    </section>
+    <footer class="page__footer">
+        <small class="footer__copyright">2025 &copy; Dawid Nowak</small>
+    </footer>
+</body>
+</html>
