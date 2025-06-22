@@ -4,12 +4,16 @@
 
 @layer base {
     h1 {
-        @apply mb-6 text-5xl;
+        @apply mb-6 text-5xl font-oswald;
     }
     h2 {
-        @apply mb-4 text-3xl;
+        @apply mb-4 text-3xl font-oswald;
     }
     h3 {
-        @apply mb-2 text-2xl;
+        @apply mb-2 text-2xl font-oswald;
+    }
+    @font-face {
+        font-family: Oswald;
+        src: url(/dist/font/Oswald/Oswald-VariableFont_wght.ttf) format("truetype");
     }
 }

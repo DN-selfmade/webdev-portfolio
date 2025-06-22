@@ -6,8 +6,8 @@ module.exports = {
   darkMode: false,
   theme: {
     extend: {
-      debugScreens: {
-        position: ['top', 'left'], // <- RICHTIG HIER
+      fontFamily: {
+        oswald: ['Oswald']
       },
     },
   },

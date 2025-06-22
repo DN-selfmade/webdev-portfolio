@@ -572,20 +572,29 @@ video {
 
 h1 {
   margin-bottom: 1.5rem;
+  font-family: Oswald;
   font-size: 3rem;
   line-height: 1;
 }
 
 h2 {
   margin-bottom: 1rem;
+  font-family: Oswald;
   font-size: 1.875rem;
   line-height: 2.25rem;
 }
 
 h3 {
   margin-bottom: 0.5rem;
+  font-family: Oswald;
   font-size: 1.5rem;
   line-height: 2rem;
+}
+
+@font-face {
+  font-family: Oswald;
+
+  src: url(/dist/font/Oswald/Oswald-VariableFont_wght.ttf) format("truetype");
 }
 
 .container {
@@ -22356,6 +22365,10 @@ body::before {
 
 .font-mono {
   font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+}
+
+.font-oswald {
+  font-family: Oswald;
 }
 
 .text-xs {
@@ -52620,6 +52633,10 @@ body::before {
     font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
   }
 
+  .sm\:font-oswald {
+    font-family: Oswald;
+  }
+
   .sm\:text-xs {
     font-size: 0.75rem;
     line-height: 1rem;
@@ -82868,6 +82885,10 @@ body::before {
 
   .md\:font-mono {
     font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  }
+
+  .md\:font-oswald {
+    font-family: Oswald;
   }
 
   .md\:text-xs {
@@ -113120,6 +113141,10 @@ body::before {
     font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
   }
 
+  .lg\:font-oswald {
+    font-family: Oswald;
+  }
+
   .lg\:text-xs {
     font-size: 0.75rem;
     line-height: 1rem;
@@ -143370,6 +143395,10 @@ body::before {
     font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
   }
 
+  .xl\:font-oswald {
+    font-family: Oswald;
+  }
+
   .xl\:text-xs {
     font-size: 0.75rem;
     line-height: 1rem;
@@ -173618,6 +173647,10 @@ body::before {
 
   .\32xl\:font-mono {
     font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  }
+
+  .\32xl\:font-oswald {
+    font-family: Oswald;
   }
 
   .\32xl\:text-xs {
