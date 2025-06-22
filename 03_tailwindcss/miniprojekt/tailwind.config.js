@@ -3,12 +3,20 @@ module.exports = {
     content: ['./dist/index.html'],
     enabled: false,
   },
-  darkMode: false, // or 'media' or 'class'
+  darkMode: false,
   theme: {
-    extend: {},
+    extend: {
+      debugScreens: {
+        position: ['top', 'left'], // <- RICHTIG HIER
+      },
+    },
   },
   variants: {
     extend: {},
   },
-  plugins: [],
-}
+  plugins: [
+  require('@vicgutt/tailwindcss-debug').screens({
+    position: ['top', 'left']
+  })
+],
+};
