@@ -12,6 +12,9 @@ module.exports = {
       colors: {
         primary: '#212f49'
       },
+      fontSize: {
+        '2xs': '0.5rem',
+      },
     },
   },
   variants: {

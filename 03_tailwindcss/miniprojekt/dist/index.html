@@ -7,64 +7,68 @@
 
     <link rel="stylesheet" href="css/styles.css">
 </head>
-<body class="bg-primary debug-screens">
-    <div class="container min-h-screen px-6 py-8 m-auto bg-gray-100">
+<body class="min-h-screen bg-primary debug-screens">
+    <div class="container min-h-screen px-6 py-8 m-auto bg-gray-100 lg:flex lg:flex-col lg:justify-between">
         <!-- Seitenkopf / Überschriften -->
     <section id="top">
         <div class="mb-8 text-center">
-            <h1 class="leading-snug">Thomas Schmidt-Gonzales Hometraining<br>Ich bring Dich in Form!</h1>
-            <h2>Muskelaufbau &middot; Funktionales Training &middot; Ernährungsberatung</h2>
+            <h1 class="text-xl md:leading-snug md:text-5xl ">Thomas Schmidt-Gonzales Hometraining<br>Ich bring Dich in Form!</h1>
+            <h2 class="text-xs md:text-3xl">Muskelaufbau &middot; Funktionales Training &middot; Ernährungsberatung</h2>
         </div>
     </section>
 
     <!-- Bild -->   
-    <section id="bild_leistungen" class="grid grid-cols-2 gap-8 ">
-        <div id="bild">
-            <img src="img/tom.jpg" alt="Thomas Schmidt Online-Trainer">
+    <section id="bild_leistungen" class="mx-auto md:grid md:grid-cols-2 md:gap-4 lg:flex lg:grid-cols-none lg:justify-center xl:w-10/12">
+        <div id="bild" class="flex-shrink-0">
+            <img class="mx-auto rounded-md shadow-md md:max-h-full max-h-72" src="img/tom.jpg" alt="Thomas Schmidt Online-Trainer">
         </div>
     
     <!-- Leistungen -->
-        <div id="leistungen">
-            <h3>Ich biete Dir:</h3>
-                <ul class="ml-5 italic list-disc">
-                    <li class="mb-4 text-xl">Unterricht per Skype und du kannst alle Sessions aufnehmen und später noch einmal ansehen.</li>
-                    <li class="mb-4 text-xl">Ganzheitliches Ganzkörpertraining</li>
-                    <li class="mb-4 text-xl">Training ohne Geräte</li>
-                    <li class="mb-4 text-xl">Schmerzreduktion</li>
-                    <li class="mb-4 text-xl">Maßgeschneiderte Ernährungspläne</li>
-                </ul>
-            <h3>Meine Qualifikationen:</h3>
-                <ul class="ml-5 italic list-disc">
-                    <li class="mb-4 text-xl">Zertifizierter Ernährungsberater</li>
-                    <li class="mb-4 text-xl">Zertifizierter Fitnesstrainer</li>
-                    <li class="mb-4 text-xl">5 Jahre Erfahrung im 1:1 - Training</li>
-                </ul>
+        <div id="leistungen" class="md:grid md:grid-cols-1 md:gap-4 xl:w-10/12">
+            <div>
+                <h3 class="mt-2 text-base md:mt-0 md:text-2xl">Ich biete Dir:</h3>
+                    <ul class="ml-5 italic list-disc">
+                        <li class="mb-2 text-xs md:text-base">Unterricht per Skype und du kannst alle Sessions aufnehmen und später noch einmal ansehen.</li>
+                        <li class="mb-2 text-xs md:text-base">Ganzheitliches Ganzkörpertraining</li>
+                        <li class="mb-2 text-xs md:text-base">Training ohne Geräte</li>
+                        <li class="mb-2 text-xs md:text-base">Schmerzreduktion</li>
+                        <li class="mb-2 text-xs md:text-base">Maßgeschneiderte Ernährungspläne</li>
+                    </ul>
+            </div>
+            <div>
+                <h3 class="mt-2 text-base md:text-2xl">Meine Qualifikationen:</h3>
+                    <ul class="ml-5 italic list-disc">
+                        <li class="mb-2 text-xs md:text-base">Zertifizierter Ernährungsberater</li>
+                        <li class="mb-2 text-xs md:text-base">Zertifizierter Fitnesstrainer</li>
+                        <li class="mb-2 text-xs md:text-base">5 Jahre Erfahrung im 1:1 - Training</li>
+                    </ul>
+            </div>
         </div>
     </section>
 
     <!-- Preise und Bezahlung -->
      <section id="preise_bezahlung" class="mt-12">
-        <div class="w-8/12 mx-auto">
-            <h2>Preise und Bezahlung</h2>
-            <p class="italic">Mein wichtigstes Ziel ist, daß du mit Deinen Zielen voran kommst.</p>
-            <p class="italic">In einer kostenlosen Anfangssession besprechen wir, was du erreichen willst und wieviel du maximal ausgeben möchtest oder kannst. Dann finden wir garantiert eine Lösung, die zu Dir passt.</p>
+        <div class="mx-auto md:w-10/12 lg:w-8/12 xl:w-10/12">
+            <h2 class="text-lg md:text-3xl">Preise und Bezahlung</h2>
+            <p class="text-xs italic md:text-base">Mein wichtigstes Ziel ist, dass du mit Deinen Zielen voran kommst.</p>
+            <p class="text-xs italic md:text-base">In einer kostenlosen Anfangssession besprechen wir, was du erreichen willst und wieviel du maximal ausgeben möchtest oder kannst. Dann finden wir garantiert eine Lösung, die zu Dir passt.</p>
         </div>
     </section>
 
     <!-- Kontakt -->
     <section id="kontakt" class="mt-12 mb-10">
-        <div class="grid w-8/12 grid-cols-2 mx-auto">
+        <div class="grid grid-cols-2 gap-8 mx-auto md:w-10/12 lg:w-8/12 xl:w-10/12">
             <div id="email">
-                <p>Schreibe mir auf:</p>
+                <p class="text-base md:text-xl 2xl:mb-2">Schreibe mir auf:</p>
                 <a 
-                class="flex items-center gap-2 px-4 py-2 bg-gray-300 rounded shadow-sm w-max hover:bg-gray-400 hover:shadow-none focus:ring-2 focus:ring-primary"
+                class="flex items-center gap-1 px-4 py-2 text-xs bg-gray-300 rounded shadow-sm md:text-lg md:gap-2 w-max hover:bg-gray-400 hover:shadow-none focus:ring-2 focus:ring-primary"
                 href="mailto:tomgonzales@gmail.com">
-                <svg class="h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-send"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+                <svg class="h-3 md:h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-send"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
                 Email senden
                 </a>
             </div>
-            <div id="whatsApp_telefon">
-                <p>WhatsApp:</p>
+            <div id="whatsApp_telefon" class="text-xs md:text-xl">
+                <p class="text-base md:text-xl 2xl:mb-4">WhatsApp:</p>
                 0275 / 555 44 33
             </div>
             </div>
