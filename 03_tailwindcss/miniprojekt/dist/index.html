@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="de" x-data="{ dark_mode: true }" x-bind:class="dark_mode ? 'dark' : ''">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Miniprojekt</title>
+
+    <link rel="stylesheet" href="css/styles.css">
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+</head>
+<body class="min-h-screen bg-primary debug-screens dark:bg-gray-300">
+    <div class="container min-h-screen px-6 py-8 m-auto bg-gray-100 dark:bg-primary lg:flex lg:flex-col lg:justify-between">
+    
+    <div id="darkButton" class="mb-4 text-right">
+        <button @click="dark_mode = !dark_mode" class="px-3 py-2 bg-gray-300 rounded shadow hover:bg-gray-400">Darkmode umschalten</button>
+    </div>
+
+        <!-- Seitenkopf / Überschriften -->
+    <section id="top">
+        <div class="mb-8 text-center">
+            <h1 class="text-xl md:leading-snug md:text-5xl ">
+                Thomas Schmidt-Gonzales Hometraining<br>
+                <span class="text-2xl italic text-indigo-900 motto sm:text-2xl md:text-6xl opacity-80"><q>&nbsp;Ich bring Dich in Form!&nbsp;</q></span>
+            </h1>
+            <h2 class="text-xs md:text-3xl">Muskelaufbau &middot; Funktionales Training &middot; Ernährungsberatung</h2>
+        </div>
+    </section>
+
+    <!-- Bild -->   
+    <section id="bild_leistungen" class="mx-auto md:grid md:grid-cols-2 md:gap-4 lg:flex lg:grid-cols-none lg:justify-center xl:w-10/12">
+        <div id="bild" class="flex-shrink-0">
+            <img class="mx-auto rounded-md shadow-md md:max-h-full max-h-72" src="img/tom.jpg" alt="Thomas Schmidt Online-Trainer">
+        </div>
+    
+    <!-- Leistungen -->
+        <div id="leistungen" class="md:grid md:grid-cols-1 md:gap-4 xl:w-10/12">
+            <div>
+                <h3 class="mt-2 text-base md:mt-0 md:text-2xl">Ich biete Dir:</h3>
+                    <ul class="ml-5 italic list-disc">
+                        <li class="mb-2 text-xs md:text-base">Unterricht per Skype und du kannst alle Sessions aufnehmen und später noch einmal ansehen.</li>
+                        <li class="mb-2 text-xs md:text-base">Ganzheitliches Ganzkörpertraining</li>
+                        <li class="mb-2 text-xs md:text-base">Training ohne Geräte</li>
+                        <li class="mb-2 text-xs md:text-base">Schmerzreduktion</li>
+                        <li class="mb-2 text-xs md:text-base">Maßgeschneiderte Ernährungspläne</li>
+                    </ul>
+            </div>
+            <div>
+                <h3 class="mt-2 text-base md:text-2xl">Meine Qualifikationen:</h3>
+                    <ul class="ml-5 italic list-disc">
+                        <li class="mb-2 text-xs md:text-base">Zertifizierter Ernährungsberater</li>
+                        <li class="mb-2 text-xs md:text-base">Zertifizierter Fitnesstrainer</li>
+                        <li class="mb-2 text-xs md:text-base">5 Jahre Erfahrung im 1:1 - Training</li>
+                    </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Preise und Bezahlung -->
+     <section id="preise_bezahlung" class="mt-12">
+        <div class="mx-auto md:w-10/12 lg:w-8/12 xl:w-10/12">
+            <h2 class="text-lg md:text-3xl">Preise und Bezahlung</h2>
+            <p class="text-xs italic md:text-base">Mein wichtigstes Ziel ist, dass du mit Deinen Zielen voran kommst.</p>
+            <p class="text-xs italic md:text-base">In einer kostenlosen Anfangssession besprechen wir, was du erreichen willst und wieviel du maximal ausgeben möchtest oder kannst. Dann finden wir garantiert eine Lösung, die zu Dir passt.</p>
+        </div>
+    </section>
+
+    <!-- Kontakt -->
+    <section id="kontakt" class="mt-12 mb-10">
+        <div class="grid grid-cols-2 gap-8 mx-auto md:w-10/12 lg:w-8/12 xl:w-10/12">
+            <div id="email">
+                <p class="text-base md:text-xl 2xl:mb-2">Schreibe mir auf:</p>
+                <a 
+                class="flex items-center gap-1 px-4 py-2 text-xs bg-gray-300 rounded shadow-sm dark:bg-gray-600 button md:text-lg md:gap-2 w-max dark:hover:bg-gray-400 hover:bg-gray-400 hover:shadow-none dark:focus:ring-gray-50 focus:ring-2 focus:ring-primary"
+                href="mailto:tomgonzales@gmail.com">
+                <svg class="h-3 md:h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-send"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+                Email senden
+                </a>
+            </div>
+            <div id="whatsApp_telefon" class="text-xs md:text-xl">
+                <p class="text-base md:text-xl 2xl:mb-4">WhatsApp:</p>
+                <p class="mobil">0275 / 555 44 33</p>
+            </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
