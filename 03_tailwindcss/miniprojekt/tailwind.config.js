@@ -3,7 +3,7 @@ module.exports = {
     content: ['./dist/index.html'],
     enabled: false,
   },
-  darkMode: false,
+  darkMode: 'class',
   theme: {
     extend: {
       fontFamily: {

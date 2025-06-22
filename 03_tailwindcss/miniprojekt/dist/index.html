@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de" class="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,12 +7,15 @@
 
     <link rel="stylesheet" href="css/styles.css">
 </head>
-<body class="min-h-screen bg-primary debug-screens">
-    <div class="container min-h-screen px-6 py-8 m-auto bg-gray-100 lg:flex lg:flex-col lg:justify-between">
+<body class="min-h-screen bg-primary debug-screens dark:bg-gray-300">
+    <div class="container min-h-screen px-6 py-8 m-auto bg-gray-100 dark:bg-primary lg:flex lg:flex-col lg:justify-between">
         <!-- Seitenkopf / Überschriften -->
     <section id="top">
         <div class="mb-8 text-center">
-            <h1 class="text-xl md:leading-snug md:text-5xl ">Thomas Schmidt-Gonzales Hometraining<br>Ich bring Dich in Form!</h1>
+            <h1 class="text-xl md:leading-snug md:text-5xl ">
+                Thomas Schmidt-Gonzales Hometraining<br>
+                <span class="text-2xl italic text-indigo-900 motto sm:text-2xl md:text-6xl opacity-80"><q>&nbsp;Ich bring Dich in Form!&nbsp;</q></span>
+            </h1>
             <h2 class="text-xs md:text-3xl">Muskelaufbau &middot; Funktionales Training &middot; Ernährungsberatung</h2>
         </div>
     </section>
@@ -61,7 +64,7 @@
             <div id="email">
                 <p class="text-base md:text-xl 2xl:mb-2">Schreibe mir auf:</p>
                 <a 
-                class="flex items-center gap-1 px-4 py-2 text-xs bg-gray-300 rounded shadow-sm md:text-lg md:gap-2 w-max hover:bg-gray-400 hover:shadow-none focus:ring-2 focus:ring-primary"
+                class="flex items-center gap-1 px-4 py-2 text-xs bg-gray-300 rounded shadow-sm dark:bg-gray-600 button md:text-lg md:gap-2 w-max dark:hover:bg-gray-400 hover:bg-gray-400 hover:shadow-none dark:focus:ring-gray-50 focus:ring-2 focus:ring-primary"
                 href="mailto:tomgonzales@gmail.com">
                 <svg class="h-3 md:h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-send"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
                 Email senden
@@ -69,7 +72,7 @@
             </div>
             <div id="whatsApp_telefon" class="text-xs md:text-xl">
                 <p class="text-base md:text-xl 2xl:mb-4">WhatsApp:</p>
-                0275 / 555 44 33
+                <p class="mobil">0275 / 555 44 33</p>
             </div>
             </div>
         </div>
