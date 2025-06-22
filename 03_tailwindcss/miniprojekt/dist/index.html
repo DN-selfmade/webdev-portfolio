@@ -1,14 +1,21 @@
 <!DOCTYPE html>
-<html lang="de" class="dark">
+<html lang="de" x-data="{ dark_mode: true }" x-bind:class="dark_mode ? 'dark' : ''">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Miniprojekt</title>
 
     <link rel="stylesheet" href="css/styles.css">
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
 </head>
 <body class="min-h-screen bg-primary debug-screens dark:bg-gray-300">
     <div class="container min-h-screen px-6 py-8 m-auto bg-gray-100 dark:bg-primary lg:flex lg:flex-col lg:justify-between">
+    
+    <div id="darkButton" class="mb-4 text-right">
+        <button @click="dark_mode = !dark_mode" class="px-3 py-2 bg-gray-300 rounded shadow hover:bg-gray-400">Darkmode umschalten</button>
+    </div>
+
         <!-- Seitenkopf / Überschriften -->
     <section id="top">
         <div class="mb-8 text-center">
