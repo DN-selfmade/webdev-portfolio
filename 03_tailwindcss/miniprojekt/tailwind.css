@@ -4,13 +4,13 @@
 
 @layer base {
     h1 {
-        @apply mb-6 text-5xl font-oswald;
+        @apply mb-6 text-5xl font-oswald text-primary;
     }
     h2 {
-        @apply mb-4 text-3xl font-oswald;
+        @apply mb-4 text-3xl font-oswald text-primary;
     }
     h3 {
-        @apply mb-2 text-2xl font-oswald;
+        @apply mb-2 text-2xl font-oswald text-primary;
     }
     @font-face {
         font-family: Oswald;
