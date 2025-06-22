@@ -12,6 +12,9 @@
     h3 {
         @apply mb-2 text-2xl font-oswald text-primary;
     }
+    p {
+        @apply text-lg
+    }
     @font-face {
         font-family: Oswald;
         src: url(/dist/font/Oswald/Oswald-VariableFont_wght.ttf) format("truetype");
