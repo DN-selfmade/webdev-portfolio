@@ -1,0 +1,68 @@
+* {
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 0.625em;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.page__container {
+    margin: 10rem;
+    padding-top: 5rem;
+    padding-bottom: 10rem;
+    background-color: lightgray;
+    display: flex;
+    justify-content: center;
+}
+
+.container__main {
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+}
+
+.main__h1 {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 3.2rem;
+    font-style: italic;
+    font-weight: 100;
+}
+
+.quote--down {
+    vertical-align: -1.5rem;
+}
+
+.main__paragraph {
+    font-size: 1.6rem;
+    text-align: center;
+    background-color: aliceblue;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+}
+
+.main__button {
+    margin: auto;
+    padding: 1rem 3rem;
+    background-color: wheat;
+    border: 0.2rem solid black;
+    border-radius: 1rem;
+    will-change: transform;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.main__button:hover {
+    cursor: pointer;
+    transform: scale(1.05);
+    box-shadow: 0.3rem 0.3rem 0.3rem rgba(0, 0, 0, 0.493);
+}
+
+.main__button:focus {
+    outline: 2px solid wheat;
+    outline-offset: 2px;
+    border-color: aliceblue;
+}
