@@ -1,0 +1,86 @@
+* {
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 0.625em;
+    height: 100vh;
+}
+body {
+    height: 99vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: lightcyan;
+}
+.display {
+    font-size: 5rem;
+    text-align: center;
+}
+
+.keys {
+    display: grid;
+    grid-template-areas: 
+    "1 2 3 4";
+    gap: 2rem;
+}
+
+.key {
+    min-width: 5rem;
+    min-height: 5rem;
+}
+
+.key:nth-child(1) {
+    order: 16;
+}
+.key:nth-child(2) {
+    order: 13;
+}
+.key:nth-child(3) {
+    order: 14;
+}
+.key:nth-child(4) {
+    order: 15;
+}
+.key:nth-child(5) {
+    order: 9;
+}
+.key:nth-child(6) {
+    order: 10;
+}
+.key:nth-child(7) {
+    order: 11;
+}
+.key:nth-child(8) {
+    order: 5;
+}
+.key:nth-child(9) {
+    order: 6;
+}
+.key:nth-child(10) {
+    order: 7;
+}
+.key:nth-child(11) {
+    order: 1;
+    background-color: red;
+}
+.key:nth-child(12) {
+    order: 2;
+    background-color: red;
+}
+.key:nth-child(13) {
+    order: 3;
+    background-color: red;
+}
+.key:nth-child(14) {
+    order: 4;
+    background-color: red;
+}
+.key:nth-child(15) {
+    order: 12;
+    background-color: grey;
+}
+.key:nth-child(16) {
+    order: 8;
+    background-color: grey;
+}
