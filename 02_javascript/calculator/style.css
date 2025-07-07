@@ -7,27 +7,36 @@ html {
     height: 100vh;
 }
 body {
+    position: relative;
     height: 99vh;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    background-color: lightcyan;
+    background-color: rgb(94, 94, 94);
 }
 .display {
+    position: absolute;
     font-size: 5rem;
     text-align: center;
 }
 
 .keys {
+    position: relative;
     display: grid;
     grid-template-areas: 
     "1 2 3 4";
     gap: 2rem;
+    justify-content: center;
 }
 
 .key {
     min-width: 5rem;
+    max-width: 20rem;
     min-height: 5rem;
+
+    font-size: 5rem;
+    border-radius: 0.5rem;
+    padding: 1rem 2.5rem;
 }
 
 .key:nth-child(1) {
