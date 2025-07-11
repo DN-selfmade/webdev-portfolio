@@ -118,6 +118,32 @@ html, body {
     margin: 0.2rem 0 0 0;
 }
 
+.home-anime {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    margin: 0 1rem;
+}
+
+.media-card-list {
+    display: flex;
+    max-height: 20rem;
+    border: 1px solid black;
+    gap: 1rem;
+    align-items: center;
+    margin-bottom: 1rem;
+    border-radius: 0.4rem;
+}
+
+.media-card-list img {
+    max-height: 20rem;
+    max-width: 10rem;
+}
+
+.media-card-list h3 {
+    padding: 1rem;
+}
+
 .hidden {
     display: none;
     opacity: 0;
