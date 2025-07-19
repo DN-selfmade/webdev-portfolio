@@ -1,0 +1,10 @@
+.page__anime {
+    margin: 2rem 0;
+}
+
+.anime__card-page {
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+    gap: 2rem;
+    justify-content: center;
+}
