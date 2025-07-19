@@ -9,28 +9,43 @@ export async function handleRoute() {
     const watchlogActive = document.getElementById("watchlog_nav");
 
     try {
-        const res = await fetch(`./view/${hash}.html`);
-        const html = await res.text();
-        main.innerHTML = html;
+        let res; 
 
         if (mediaType === "anime" && mediaId) {
-            const { renderAnimeDetails } = await import("./views/details.js");
-            await renderAnimeDetails(mediaId);
+            const { renderAnimeDetailsView } = await import("./views/details.js");
+            res = await fetch("./view/details.html")
+            main.innerHTML = await res.text();
+            await renderAnimeDetailsView(mediaId);
+
         } else if (mediaType === "anime") {
             const { renderAnimeView } = await import("./views/anime.js");
+            res = await fetch(`./view/${hash}.html`);
+            main.innerHTML = await res.text();
             await renderAnimeView(); 
+
         } else if (mediaType === "movie") {
+            res = await fetch(`./view/${hash}.html`);
+            main.innerHTML = await res.text();
             // renderMovieDetails(mediaId)
+
         } else if (mediaType === "home") {
             const { renderIndexView } = await import("./views/home.js");
+            res = await fetch(`./view/${hash}.html`);
+            main.innerHTML = await res.text();
             await renderIndexView();
+
         } else if (mediaType === "watchlog") {
             const { renderWatchlogView } = await import("./views/watchlog.js");
+            res = await fetch(`./view/${hash}.html`);
+            main.innerHTML = await res.text();
             await renderWatchlogView();
+
         } else if (mediaType === "") {
             window.location.hash = "home"
         }
+
         eventCardUrl();
+
     } catch (err) {
         main.innerHTML = "<p>View konnte nicht geladen werden.</p>";
         console.error("Fehler beim Laden des Views:", err);
