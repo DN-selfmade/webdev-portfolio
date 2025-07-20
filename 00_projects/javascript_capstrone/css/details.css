@@ -1,0 +1,167 @@
+.anime__info {
+    display: flex;
+    flex-direction: column;
+}
+
+.anime__head {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 0.1rem dotted var(--color-border);
+    padding-bottom: 0.5rem;
+}
+
+.info__rating {
+    font-size: 1.4rem;
+    font-weight: Bold;
+    width: 5rem;
+    height: 5rem;
+    margin: 2rem 1rem;
+    border: 0.2rem solid var(--color-border);
+    border-radius: 0.6rem;
+    box-shadow: 0.1rem 0.1rem 0.1rem var(--color-shadow);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 0 0 auto;
+}
+
+.rating__description {
+    font-size: 1.2rem;
+    position: absolute;
+    padding: 1.5rem;
+    background-color: var(--color-bg-layout-dark);
+    color: var(--color-text-dark);
+    border-radius: 0 2rem 2rem 2rem;
+    box-shadow: 0.5rem 0.5rem 0.5rem var(--color-shadow);
+}
+
+.title__container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.title__main {
+    padding: 0;
+    margin: 0;
+    text-align: center;
+}
+
+.title__lang h2 {
+    padding: 0;
+    margin: 0;
+    font-size: 1.2rem;
+}
+
+.title__lang {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 0.5rem;
+}
+
+.title__placeholder {
+    margin-left: 2rem;
+    flex: 0 0 auto;
+    font-size: 1.6rem;
+}
+
+.title__lang-tag {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 0 0 auto;
+    background: #ddd;
+    margin: 0 1rem 0 2rem;
+    border-radius: 4px;
+    height: 2rem;
+    width: 2rem;
+    font-size: 1.4rem;
+    font-weight: bold;
+}
+
+#watchCounter {
+    font-size: 1.4rem;
+    font-weight: Bold;
+    width: 5rem;
+    height: 5rem;
+    margin: 2rem 1rem;
+    border: 0.2rem solid var(--color-border);
+    border-radius: 0.6rem;
+    box-shadow: 0 0.1rem 0.1rem 0.1rem var(--color-shadow);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 0 0 auto;
+}
+
+.show__detail {
+    display: flex;
+    justify-content: center;
+    gap: 0.8rem;
+    margin: 2rem 0.5rem;
+}
+
+.image__detail {
+    width: 20rem;
+    border-radius: 0.3rem;
+    box-shadow: 0.2rem 0.2rem 0.2rem var(--color-shadow);
+}
+
+.detail__info {
+    display: flex;
+    flex: 1 0 auto;
+    max-width: 17rem;
+    flex-direction: column;
+    justify-content: space-between;
+    margin: 1rem 0;
+}
+
+.studio__li, .publisher__li, .source__li {
+    list-style: none;
+    font-size: 1.1rem;
+}
+.detail__info div ul {
+    margin-top: 0.3rem;
+    padding-left: 2rem;
+}
+
+.studio__title, .publisher__title, .source__title, .score__title {
+    margin: 0;
+}
+.score__title {
+    margin-bottom: 0.5rem;
+}
+
+.detail__score {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.info__score {
+    font-size: 1.2rem;
+    width: 5rem;
+    height: 2.5rem;
+    border: 0.1rem solid var(--color-border);
+    border-radius: 0.6rem;
+    box-shadow: 0.1rem 0.1rem 0.1rem var(--color-shadow);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 0 0 auto;
+}
+
+.score__description {
+    font-size: 1.2rem;
+    position: absolute;
+    padding: 1.5rem;
+    background-color: var(--color-bg-layout-dark);
+    color: var(--color-text-dark);
+    border-radius: 2rem 0 2rem 2rem;
+    box-shadow: 0 0.5rem 0.5rem 0.5rem var(--color-shadow);
+}
+
+.score__placeholder {
+    font-size: 1.6rem;
+}

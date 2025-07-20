@@ -2,6 +2,7 @@
 
 import { getCurrentAnime } from "../api/jikan.js";
 import { renderAnime } from "../dom/renderCard.js";
+import { animeMovieFilter } from "../logic/filter.js";
 
 export async function renderIndexView() {
    await animeList();
@@ -15,6 +16,7 @@ async function animeList() {
     const anime = await getCurrentAnime();
     for (let i = 0; i <= 5; i++) {
         if (id === anime[i].mal_id) continue;
+        if (animeMovieFilter(anime[i].type)) continue;
         id = anime[i].mal_id;
         const element = anime[i];
         const card  = renderAnime(element);
@@ -27,7 +29,8 @@ function listEnd(element, page) {
     
     const div = document.createElement('div');
 
-    div.classList = 'media__card home__card-end';
+    div.classList = 'home__card-end';
+
     div.innerHTML = `
     <a href="#${page}" class="more-arrow" ><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
     <polyline points="13 17 18 12 13 7"></polyline>
