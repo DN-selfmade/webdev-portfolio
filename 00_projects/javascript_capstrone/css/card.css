@@ -7,6 +7,12 @@
     margin: 0;
     border: 0.1rem solid var(--color-border);
     border-radius: 0.6rem;
+    box-shadow: 0.3rem 0.3rem 0.3rem var(--color-shadow);
+}
+
+.media__card--clicked {
+    box-shadow: none;
+    transform: translate(1.15);
 }
 
 .card__img {
@@ -33,11 +39,13 @@
 }
 
 .home__card-end {
-    border-color: transparent;
     height: 18rem;
     width: 10rem;
     align-self: center;
-
+    box-shadow: none;
+    position: relative;
+    flex: 0 0 auto;
+    margin: 0;
 }
 
 .more-arrow {

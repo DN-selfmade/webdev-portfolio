@@ -27,6 +27,7 @@
   list-style: none;
   align-items: center;
 }
+
 .head__search {
     display: flex;
     width: 100%;
@@ -57,7 +58,12 @@
     font-size: 1.8rem;
     font-weight: 500;
     text-decoration: none;
-    padding: 1rem;
+    padding: 0.5rem;
+    margin: 0.5rem;
+    border: 0.1rem dotted var(--color-border);
+    border-radius: 0.4rem;
+    box-shadow: 0.3rem 0.3rem 0.3rem black;
+
 }
 
 .navbar__li a {
@@ -68,9 +74,8 @@
 
 .active__nav {
     font-weight: bold;
-    font-style: italic;
-    transform: scale(1.3);
-
+    transform: scale(1.1);
+    box-shadow: 0.1rem 0.1rem 0.1rem var(--color-shadow);
 }
 .page__footer {
     display: flex;
