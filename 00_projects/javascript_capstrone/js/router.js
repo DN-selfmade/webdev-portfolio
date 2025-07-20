@@ -1,4 +1,4 @@
-"use strict";
+"use strict"
 import { eventCardUrl } from "./dom/renderDetails.js";
 
 export async function handleRoute() {
@@ -7,13 +7,14 @@ export async function handleRoute() {
     const main = document.getElementById("main");
     const homeActive = document.getElementById("home_nav");
     const watchlogActive = document.getElementById("watchlog_nav");
+    const headLogo = document.getElementById("head_logo");
 
     try {
         let res; 
 
         if (mediaType === "anime" && mediaId) {
             const { renderAnimeDetailsView } = await import("./views/details.js");
-            res = await fetch("./view/details.html")
+            res = await fetch("./view/details.html");
             main.innerHTML = await res.text();
             await renderAnimeDetailsView(mediaId);
 
@@ -21,7 +22,7 @@ export async function handleRoute() {
             const { renderAnimeView } = await import("./views/anime.js");
             res = await fetch(`./view/${hash}.html`);
             main.innerHTML = await res.text();
-            await renderAnimeView(); 
+            await renderAnimeView();
 
         } else if (mediaType === "movie") {
             res = await fetch(`./view/${hash}.html`);
@@ -41,7 +42,7 @@ export async function handleRoute() {
             await renderWatchlogView();
 
         } else if (mediaType === "") {
-            window.location.hash = "home"
+            window.location.hash = "home";
         }
 
         eventCardUrl();
@@ -50,6 +51,13 @@ export async function handleRoute() {
         main.innerHTML = "<p>View konnte nicht geladen werden.</p>";
         console.error("Fehler beim Laden des Views:", err);
     }
+    navbarActiveToggle(mediaType, homeActive, watchlogActive);
+    headLogoToggle();
+}
+
+
+// Toggle-function for NavBar-Element Active.
+function navbarActiveToggle(mediaType, homeActive, watchlogActive) {
     if (mediaType === "home") {
         homeActive.classList.add("active__nav")
     } else if (mediaType === "watchlog") {
@@ -60,4 +68,22 @@ export async function handleRoute() {
     } else if (!(mediaType === "watchlog")) {
         watchlogActive.classList.remove("active__nav");
     }
-}
+};
+
+// Toggle-function for Visibility of Watchlog X Logo
+export function headLogoToggle() {
+    const hash = window.location.hash.slice(1);
+    const mediaId = hash.split("/")[1];
+    const headLogo = document.getElementById("head_logo");
+
+    if (mediaId === undefined) {
+        headLogo.classList.add("hidden-logo");
+        if (headLogo.classList.contains("hidden")) headLogo.classList.remove("hidden");
+    } else {
+        if (headLogo.classList.contains("hidden")) {
+            headLogo.classList.remove("hidden");
+        } else if (headLogo.classList.contains("hidden-logo")) {
+            headLogo.classList.remove("hidden-logo");
+        }
+    }
+};

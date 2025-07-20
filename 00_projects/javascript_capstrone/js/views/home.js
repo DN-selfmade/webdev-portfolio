@@ -2,6 +2,7 @@
 
 import { getCurrentAnime } from "../api/jikan.js";
 import { renderAnime } from "../dom/renderCard.js";
+import { animeMovieFilter } from "../logic/filter.js";
 
 export async function renderIndexView() {
    await animeList();
@@ -15,6 +16,7 @@ async function animeList() {
     const anime = await getCurrentAnime();
     for (let i = 0; i <= 5; i++) {
         if (id === anime[i].mal_id) continue;
+        if (animeMovieFilter(anime[i].type)) continue;
         id = anime[i].mal_id;
         const element = anime[i];
         const card  = renderAnime(element);

@@ -1,6 +1,7 @@
 "use strict"
 import { getCurrentAnime } from "../api/jikan.js";
-import { renderAnime } from "../dom/renderCard.js"
+import { renderAnime } from "../dom/renderCard.js";
+import { animeMovieFilter } from "../logic/filter.js";
 
 export async function renderAnimeView() {
     const container = document.getElementById("animeList");
@@ -9,6 +10,7 @@ export async function renderAnimeView() {
 
     for (let i = 0; i < anime.length; i++) {
         if (id === anime[i].mal_id) continue;
+        if (animeMovieFilter(anime[i].type)) continue;
         id = anime[i].mal_id;
         const element = anime[i];
         const card  = renderAnime(element);

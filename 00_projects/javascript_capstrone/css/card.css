@@ -34,6 +34,9 @@
 
 .home__card-end {
     border-color: transparent;
+    height: 18rem;
+    width: 10rem;
+    align-self: center;
 
 }
 

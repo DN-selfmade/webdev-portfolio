@@ -3,13 +3,14 @@
     background-color: var(--color-bg-layout);
     display: flex;
     justify-content: space-between;
-    min-width: 0;
-    flex-shrink: 1;
+    flex-shrink: 0;
     padding: 2rem;
     align-items: center;
+    gap: 2rem;
 }
 
 #head_logo {
+    display: flex;
     max-width: 15vw;
     height: auto;
     border: 1px solid var(--color-border);
@@ -19,7 +20,7 @@
 
 .navbar {
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: none;
   gap: 1rem;
   margin: 1rem;
   padding: 0;
@@ -28,20 +29,18 @@
 }
 .head__search {
     display: flex;
+    width: 100%;
     align-items: center;
-}
-
-.head__search label {
-  display: flex;
-  align-items: flex-end;
 }
 
 #search-txt {
   font-size: 1.6rem;
-  width: 25rem;
-  padding: 0.5rem;
+  width: 30rem;
+  padding: 0.6rem;
+  margin: 1.5rem auto;
   background-color: var(--color-bg-layout);
   border-radius: 1rem;
+
 }
 
 .search__btn {
@@ -97,4 +96,16 @@
     gap: 1rem;
     overflow-x: scroll;
     scroll-behavior: smooth;
+}
+
+#head_logo[data-status="seen"] {
+  background-color: var(--status-seen);
+}
+
+#head_logo[data-status="watching"] {
+  background-color: var(--status-watching);
+}
+
+#head_logo[data-status="dropped"] {
+  background-color: var(--status-dropped);
 }

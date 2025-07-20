@@ -1,9 +1,7 @@
 "use strict"
-import { handleRoute } from "./router.js";
+import { handleRoute, headLogoToggle } from "./router.js";
 
 document.addEventListener("DOMContentLoaded", () => {
-   handleRoute(); // beim Start
-   window.addEventListener("hashchange", handleRoute); // beim Navigieren
 
    const searchBtn = document.getElementById("search-btn");
    const searchInput = document.getElementById("search-txt");
@@ -12,24 +10,25 @@ document.addEventListener("DOMContentLoaded", () => {
    const watchlogNav = document.getElementById("watchlog_nav");
    const headLogo = document.getElementById("head_logo");
 
-   searchBtn.addEventListener("click", () => {
+   handleRoute(); // at start
+   window.addEventListener("hashchange", handleRoute); // while navigation
+
+   searchBtn.addEventListener("click", () => {  // enable to search media with text.
       searchInput.classList.remove("hidden");
       searchInput.focus();
       searchBtn.classList.add("hidden");
       navbar.classList.add("hidden");
       homeNav.classList.add("hidden");
       watchlogNav.classList.add("hidden");
+      headLogo.classList.add("hidden");
    });
 
-   searchInput.addEventListener("blur", () => {
+   searchInput.addEventListener("blur", () => { // disable searching media with text
       searchInput.classList.add("hidden");
       searchBtn.classList.remove("hidden");
       navbar.classList.remove("hidden");
       homeNav.classList.remove("hidden");
       watchlogNav.classList.remove("hidden");
-   });
-   
-   headLogo.addEventListener("click", () => {
-      window.location.hash = "home";
+      headLogoToggle();
    });
 });
