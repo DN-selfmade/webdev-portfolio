@@ -1,8 +1,8 @@
 .media__card {
     position: relative;
     flex: 0 0 auto;
-    height: 30rem;
-    width: 20rem;
+    height: 28rem;
+    width: 18rem;
     overflow-x: hidden;
     margin: 0;
     border: 0.1rem solid var(--color-border);
