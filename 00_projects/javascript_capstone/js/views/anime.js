@@ -1,18 +1,32 @@
 "use strict"
-import { getCurrentAnime } from "../api/jikan.js";
+import { getCurrentAnime, getCurrentAnimeMovies } from "../api/jikan.js";
 import { renderAnime } from "../dom/renderCard.js";
-import { animeMovieFilter } from "../logic/filter.js";
+import { animeTvFilter, animeMovieFilter } from "../logic/filter.js";
 
 export async function renderAnimeView() {
     const container = document.getElementById("animeList");
     const anime = await getCurrentAnime();
-    let id = 0;
+    const animes = animeTvFilter(anime);
 
-    for (let i = 0; i < anime.length; i++) {
-        if (id === anime[i].mal_id) continue;
-        if (animeMovieFilter(anime[i].type)) continue;
-        id = anime[i].mal_id;
-        const element = anime[i];
+    for (let i = 0; i < animes.length; i++) {
+        const element = animes[i];
+
+        const card  = renderAnime(element);
+        container.appendChild(card);
+    };
+};
+
+export async function renderMovieAnimeView() {
+    const container = document.getElementById("animeList");
+    const date = new Date();
+    const year = date.getFullYear();
+
+    const anime = await getCurrentAnimeMovies(year);
+    const animes = animeMovieFilter(anime);
+
+    for (let i = 0; i < animes.length; i++) {
+        const element = animes[i];
+
         const card  = renderAnime(element);
         container.appendChild(card);
     };

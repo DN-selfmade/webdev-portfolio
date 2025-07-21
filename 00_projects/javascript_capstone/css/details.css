@@ -11,8 +11,8 @@
 }
 
 .info__rating {
-    font-size: 1.4rem;
-    font-weight: Bold;
+    font-size: 1.2rem;
+    font-weight: bolder;
     width: 5rem;
     height: 5rem;
     margin: 2rem 1rem;
@@ -98,20 +98,30 @@
 .show__detail {
     display: flex;
     justify-content: center;
+    align-items: center;
     gap: 0.8rem;
     margin: 2rem 0.5rem;
 }
 
 .image__detail {
-    width: 20rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 30rem;
     border-radius: 0.3rem;
     box-shadow: 0.2rem 0.2rem 0.2rem var(--color-shadow);
+    overflow: hidden;
+}
+
+.image__detail img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 .detail__info {
     display: flex;
-    flex: 1 0 auto;
-    max-width: 17rem;
+    min-width: 17rem;
     flex-direction: column;
     justify-content: space-between;
     margin: 1rem 0;
@@ -159,9 +169,130 @@
     background-color: var(--color-bg-layout-dark);
     color: var(--color-text-dark);
     border-radius: 2rem 0 2rem 2rem;
-    box-shadow: 0 0.5rem 0.5rem 0.5rem var(--color-shadow);
+    box-shadow: -0.5rem 0.5rem 0.5rem var(--color-shadow);
 }
 
-.score__placeholder {
+.score__placeholder, .info__placeholder {
     font-size: 1.6rem;
 }
+
+.info__status-details {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.status__type-details {
+    font-size: 1.4rem;
+    font-weight: 500;
+    width: 7rem;
+    height: 3rem;
+    border: 0.1rem solid var(--color-border);
+    border-radius: 0.6rem;
+    box-shadow: 0.1rem 0.1rem 0.1rem var(--color-shadow);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 0 0 auto;
+}
+
+.status__status-details {
+    font-size: 1.4rem;
+    font-weight: 500;
+    width: 10rem;
+    height: 3rem;
+    border: 0.1rem solid var(--color-border);
+    border-radius: 0.6rem;
+    box-shadow: 0.1rem 0.1rem 0.1rem var(--color-shadow);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 0 0 auto;
+}
+
+.status__status-details[data-status="finished"] {
+    background-color: var(--status-seen);
+}
+
+.status__status-details[data-status="airing"] {
+    background-color: var(--status-watching);
+}
+
+.status__status-details[data-status="not"] {
+    background-color: var(--status-dropped);
+}
+
+.status__season-details {
+    font-size: 1.4rem;
+    font-weight: 500;
+    width: 10rem;
+    height: 3rem;
+    border: 0.1rem solid var(--color-border);
+    border-radius: 0.6rem;
+    box-shadow: 0.1rem 0.1rem 0.1rem var(--color-shadow);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 0 0 auto;
+}
+
+.info__length {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.length__duration, .length__episodes {
+    border: 0.1rem solid var(--color-border);
+    overflow: hidden;
+    border-radius: 0.6rem;
+    margin: 3rem 0;
+}
+
+.duration__title, .episodes__title {
+    background-color: var(--color-bg-layout);
+    margin: 0;
+    border-bottom: 0.1rem solid var(--color-border);
+    padding: 0.5rem;
+}
+
+.duration__content, .episodes__content {
+    margin: 0;
+    text-align: center;
+    padding: 0.5rem;
+    font-size: 1.2rem;
+}
+
+.details__genre {
+    border: 0.1rem solid var(--color-border);
+    border-radius: 0.6rem;
+    overflow: hidden;
+    width: 90vw;
+    margin: 0 auto 2rem auto;
+}
+
+.genre__title {
+    text-align: center;
+    margin: 0;
+    padding: 0.5rem;
+    background-color: var(--color-bg-layout);
+    border-bottom: 0.1rem solid var(--color-border);
+}
+
+.genre__content {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center; 
+    padding: 1rem;   
+    gap: 1rem;
+}
+
+.genre__element {
+    font-size: 1.2rem;
+    padding: 0.4rem;
+    border: 0.1rem solid var(--color-border);
+    border-radius: 0.6rem;
+    box-shadow: 0.2rem 0.2rem 0.2rem var(--color-shadow);
+    background-color: var(--color-bg-layout);
+}
+

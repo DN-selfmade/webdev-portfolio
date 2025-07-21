@@ -16,7 +16,7 @@ export async function handleRoute() {
             const { renderAnimeDetailsView } = await import("./views/details.js");
             res = await fetch("./view/details.html");
             main.innerHTML = await res.text();
-            await renderAnimeDetailsView(mediaId);
+            await renderAnimeDetailsView(mediaType, mediaId);
 
         } else if (mediaType === "anime") {
             const { renderAnimeView } = await import("./views/anime.js");
@@ -24,10 +24,17 @@ export async function handleRoute() {
             main.innerHTML = await res.text();
             await renderAnimeView();
 
-        } else if (mediaType === "movie") {
-            res = await fetch(`./view/${hash}.html`);
+        } else if (mediaType === "movie" && mediaId) {
+            const { renderAnimeDetailsView } = await import("./views/details.js");
+            res = await fetch("./view/details.html");
             main.innerHTML = await res.text();
-            // renderMovieDetails(mediaId)
+            await renderAnimeDetailsView(mediaType, mediaId);
+
+        } else if (mediaType === "movie") {
+            const { renderMovieAnimeView } = await import("./views/anime.js");
+            res = await fetch(`./view/anime.html`);
+            main.innerHTML = await res.text();
+            await renderMovieAnimeView();
 
         } else if (mediaType === "home") {
             const { renderIndexView } = await import("./views/home.js");

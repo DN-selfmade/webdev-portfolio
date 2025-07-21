@@ -5,7 +5,7 @@
     width: 18rem;
     overflow-x: hidden;
     margin: 0;
-    border: 0.1rem solid var(--color-border);
+    border: 0.2rem solid var(--color-border);
     border-radius: 0.6rem;
     box-shadow: 0.3rem 0.3rem 0.3rem var(--color-shadow);
 }
@@ -60,4 +60,17 @@
     height: 90%;
     width: 100%;
     color: var(--color-text);
+}
+
+.media__card[data-status="watchlist"]{
+    border: 0.3rem solid var(--status-watchlist);
+}
+.media__card[data-status="seen"] {
+    border: 0.3rem solid var(--status-seen);
+}
+.media__card[data-status="watching"] {
+    border: 0.3rem solid var(--status-watching);
+}
+.media__card[data-status="dropped"] {
+    border: 0.3rem solid var(--status-dropped);
 }

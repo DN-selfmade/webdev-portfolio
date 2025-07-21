@@ -2,10 +2,10 @@
 import { getAnimeById } from "../api/jikan.js";
 import { renderAnimeDetails } from "../dom/renderDetails.js";
 
-export async function renderAnimeDetailsView(mediaId) {
+export async function renderAnimeDetailsView(mediatype, mediaId) {
     const container = document.querySelector(".main__page");
 
-    const animeById = await getAnimeById(mediaId);
+    const animeById = await getAnimeById(mediatype, mediaId);
 
     console.log(animeById);
 

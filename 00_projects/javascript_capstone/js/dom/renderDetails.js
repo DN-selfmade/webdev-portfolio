@@ -19,7 +19,7 @@ export function eventCardUrl() {
    })
 }
 
-// Creating the highest DOM-Tag of a detail page
+// Creating the Content of a detail page
 export function renderAnimeDetails(anime) {
     const div = document.createElement("div");
     const head = document.createElement("div");
@@ -33,6 +33,10 @@ export function renderAnimeDetails(anime) {
     head.appendChild(subTitlesAnime(anime));
     div.appendChild(head);
     div.appendChild(showAnimeDetails(anime));
+    div.appendChild(infoAnimeDetails(anime));
+    div.appendChild(lengthAnimeDetails(anime));
+    div.appendChild(genresAnimeDetails(anime));
+    
     return div;
 }
 
@@ -57,35 +61,39 @@ function ratingAnimeDetails(anime) {
 
     info.classList = "rating__description hidden";
     ratingTag.classList = "info__rating info__rating-Anime";
+    if (anime.rating === null) {
+        ratingTag.textContent = "k.A";
+    } else {
+        if(rating.toUpperCase() === "G") {
+            info.textContent = `${rating} - Steht für alle Altersgruppen.`;
+        } else if (rating.toUpperCase() === "PG") {
+            info.textContent = `${rating} - Steht für eine empfohlene elternliche Begleitung.`;
+        } else if (rating.toUpperCase() === "PG-13") {
+            info.textContent = `${rating} - Steht für eine Altersfreigabe ab 13 Jahren.`;
+        } else if (rating.toUpperCase() === "R-17+" || rating.toUpperCase() === "R-17") {
+            info.textContent = `${rating} - Steht für "Nur ab 17 Jahren", beinhaltet Gewalt u.ä..`;
+        } else if (rating.toUpperCase() === "R" || rating.toUpperCase() === "R+") {
+            info.textContent = `${rating} - Steht für "Nur ab 17 Jahren", Gewalt etc. und eventuell milde Nacktheit.`;
+        } else if (rating.toUpperCase() === "RX") {
+            info.textContent = `${rating} - Steht für "Erwachseneninhalte", enthält "Hentai".`;
+        }
 
-    if(rating.toUpperCase() === "G") {
-        info.textContent = `${rating} - Steht für alle Altersgruppen.`;
-    } else if (rating.toUpperCase() === "PG") {
-        info.textContent = `${rating} - Steht für eine empfohlene elternliche Begleitung.`;
-    } else if (rating.toUpperCase() === "PG-13") {
-        info.textContent = `${rating} - Steht für eine Altersfreigabe ab 13 Jahren.`;
-    } else if (rating.toUpperCase() === "R-17+" || rating.toUpperCase() === "R-17") {
-        info.textContent = `${rating} - Steht für "Nur ab 17 Jahren", beinhaltet Gewalt u.ä..`;
-    } else if (rating.toUpperCase() === "R" || rating.toUpperCase() === "R+") {
-        info.textContent = `${rating} - Steht für "Nur ab 17 Jahren", Gewalt etc. und eventuell milde Nacktheit.`;
-    } else if (rating.toUpperCase() === "RX") {
-        info.textContent = `${rating} - Steht für "Erwachseneninhalte", enthält "Hentai".`;
+        ratingTag.textContent = rating;
+        ratingTag.appendChild(info);
+
+        ratingTag.addEventListener("click", (event) => {
+            const x = event.pageX;
+            const y = event.pageY;
+
+            info.style.left = `${x + 10}px`;
+            info.style.top = `${y + 10}px`;
+            
+            info.classList.remove("hidden");
+            
+            setTimeout(() => info.classList.add("hidden"), 4000);
+        });
     }
-
-    ratingTag.textContent = rating;
-    ratingTag.appendChild(info);
-
-    ratingTag.addEventListener("click", (event) => {
-        const x = event.clientX;
-        const y = event.clientY;
-
-        info.style.left = `${x + 10}px`;
-        info.style.top = `${y + 10}px`;
-        
-        info.classList.remove("hidden");
-        
-        setTimeout(() => info.classList.add("hidden"), 4000);
-    });
+    
 
     return ratingTag;
 }
@@ -104,12 +112,14 @@ function scoreDetails(score, source) {
         info.textContent = "Diese Bewertung kommt von Watchlog X.";
     };
 
-    scoreTag.textContent = `${score}/10`;
+    const scoreRounded = Math.floor(score * 10) / 10;
+
+    scoreTag.innerHTML = `${scoreRounded}<strong>/</strong>10`;
     scoreTag.appendChild(info);
 
     scoreTag.addEventListener("click", (event) => {
-        const x = event.clientX;
-        const y = event.clientY;
+        const x = event.pageX;
+        const y = event.pageY;
 
         info.style.left = `${x - 10}px`;
         info.style.top = `${y}px`;
@@ -139,6 +149,7 @@ function hTitleAnimeDetails(anime) {
     return titleContainer;
 }
 
+// Creating subtitles for Title-Tag of Anime-details
 function subTitlesAnime(anime) {
     const subTitles = document.createElement("div");
     const gb = document.createElement("span");
@@ -189,6 +200,7 @@ function watchCounter() {
 // Creating a Show-DOM-tags of anime-detail page
 function showAnimeDetails(anime) {
     const show = document.createElement("div");
+    const imgDiv = document.createElement("div");
     const image = document.createElement("img");
     const studioContainer = document.createElement("div");
     const producersContainer = document.createElement("div");
@@ -201,9 +213,9 @@ function showAnimeDetails(anime) {
     const sourceList = document.createElement("ul");
     const sourceContent = document.createElement("li");
 
-    const ourScore = 0;                                     // Change this for Watchlog later
+    const ourScore = 0;                                // Change this for Watchlog later
 
-    image.classList = "image__detail";
+    imgDiv.classList = "image__detail";
     show.classList = "show__detail";
     placeHolder.classList = "score__placeholder";
     infoContainer.classList = "detail__info";
@@ -253,6 +265,8 @@ function showAnimeDetails(anime) {
         infoContainer.appendChild(producersContainer);
     };
 
+    imgDiv.appendChild(image);
+
     sourceContainer.appendChild(sourceTitle);
     sourceList.appendChild(sourceContent);
     sourceContainer.appendChild(sourceList);
@@ -265,9 +279,300 @@ function showAnimeDetails(anime) {
     infoContainer.appendChild(scoreTitle);
     infoContainer.appendChild(scoreContainer);
 
-    show.appendChild(image);
+    show.appendChild(imgDiv);
     show.appendChild(infoContainer);
     
 
     return show;
+}
+
+function createPlaceholderPoint() {
+    const placeholder = document.createElement("span");
+    
+    placeholder.classList = "info__placeholder";
+    placeholder.textContent = "•";
+
+    return placeholder;
+}
+
+// Creating the info-part of anime-detail page
+function infoAnimeDetails(anime) {
+    const div = document.createElement("div");
+
+    div.classList = "info__status-details";
+
+    div.appendChild(typeInfoAnimeDetails(anime));
+    div.appendChild(createPlaceholderPoint());
+    div.appendChild(statusInfoAnimeDetails(anime));
+    div.appendChild(createPlaceholderPoint());
+    div.appendChild(seasonInfoAnimeDetails(anime));
+
+    return div;
+}
+
+// Creating the type tag of info.part
+function typeInfoAnimeDetails({type}) {
+    const typeTag = document.createElement("div");
+
+    typeTag.classList = "status__type-details";
+    typeTag.dataset.type = `${type}`;
+
+    switch (type.toUpperCase()) {
+        case "TV":
+            typeTag.textContent = `Anime`;
+            break;
+        
+        case "MOVIE":
+            typeTag.textContent = `Film`;
+            break;
+        
+        case "OVA":
+            typeTag.textContent = `OVA`;
+            break;
+    
+        case "SPECIAL":
+            typeTag.textContent = `Spezial`;
+            break;
+        
+        case "ONA":
+            typeTag.textContent = `ONA`;
+            break;
+
+        case "MUSIC":
+            typeTag.textContent = `Musik`;
+            break;
+        
+        default:
+            break;
+    }
+
+    return typeTag;
+}
+
+// Creating  Status for infoAnimeDetails.
+function statusInfoAnimeDetails({status}) {
+    const statusTag = document.createElement("div");
+
+    statusTag.classList = "status__status-details";
+
+    const statusArray = status.split(" ");
+
+    switch (statusArray[0].toLowerCase()) {
+        case "finished":
+            statusTag.textContent = "Ausgestrahlt";
+            statusTag.dataset.status = "finished";
+            break;
+
+        case "currently":
+            statusTag.textContent = "Läuft";
+            statusTag.dataset.status = "airing";
+            break;
+            
+        case "not":
+            statusTag.textContent = "Ausstehend";
+            statusTag.dataset.status = "not";
+            break;
+
+        default:
+            break;
+    }
+
+    statusTag.dataset.value = status;
+
+    return statusTag;
+}
+
+// Creating Season info for status
+function seasonInfoAnimeDetails({season, year, aired}) {
+    const seasonTag = document.createElement("div");
+
+    seasonTag.classList = "status__season-details";
+    seasonTag.dataset.year = year;
+    seasonTag.dataset.season = season;
+
+    if (season === null) {
+        seasonTag.textContent = {year};
+        if (year === null) {
+            
+            if (aired.from === null) {
+                seasonTag.textContent = "k.A.";
+            } else {
+                const dateYMDHour = aired.from.split("T");
+                const dateYMD = dateYMDHour[0];
+                const [dateY, dateM, dateD] = dateYMD.split("-");
+                 
+                seasonTag.textContent = `${dateD}.${dateM}.${dateY}`;
+                seasonTag.dataset.year = dateY;
+            }
+        }
+    } else {
+        switch (season.toLowerCase()) {
+            case "spring":
+                seasonTag.textContent = `Frühling ${year}`;
+                break;
+            
+            case "summer":
+                seasonTag.textContent = `Sommer ${year}`;
+                break;
+        
+            case "fall":
+                seasonTag.textContent = `Herbst ${year}`;
+                break;
+            
+            case "autumn":
+                seasonTag.textContent = `Herbst ${year}`;
+                break;
+        
+            case "winter":
+                seasonTag.textContent = `Winter ${year}`;
+                break;
+        
+            default:
+                break;
+        }
+    }
+
+    return seasonTag;
+}
+
+// Creating the length-part of the anime detail page.
+function lengthAnimeDetails(anime) {
+    const div = document.createElement("div");
+    div.classList = "info__length";
+
+    div.appendChild(durationAnimeDetails(anime.duration, anime.episodes));
+    div.appendChild(episodesAnimeDetails(anime));
+
+    return div;
+}
+
+// Creating the duration-tag of length-part
+function durationAnimeDetails(duration, episodes) {
+    const div = document.createElement("div");
+    const title = document.createElement("h3");
+    const content = document.createElement("p");
+
+    const durationParts = duration.split(" ");
+    const durationNumbers = durationParts.filter(part => !isNaN(part));
+
+    div.classList = "length__duration";
+    title.classList = "duration__title";
+    content.classList = "duration__content";
+
+    title.textContent = "Spiellänge:";
+
+    if (durationParts.includes("hr")) {
+
+        if (episodes > 1) {
+            content.textContent = `ca. ${durationNumbers[0]} Stunden und ${durationNumbers[1]} Minuten pro Teil.`;
+        } else {
+            content.textContent = `${durationNumbers[0]} Stunden und ${durationNumbers[1]} Minuten.`;
+        }
+
+    } else if (durationParts.includes("min")) {
+
+        if (episodes > 1) {
+            content.textContent = `${durationNumbers} Minuten pro Folge.`;
+        } else {
+            content.textContent = `${durationNumbers} Minuten.`;
+        }
+
+    } else {
+        content.textContent = "Keine Angaben vorhanden.";
+    }
+
+    div.appendChild(title);
+    div.appendChild(content);
+
+    return div;
+}
+
+// Create episode content for length part
+function episodesAnimeDetails(anime) {
+    const div = document.createElement("div");
+    const title = document.createElement("h3");
+    const content = document.createElement("p");
+    const statusTag = statusInfoAnimeDetails(anime);
+    const typeTag = typeInfoAnimeDetails(anime);
+    const episodes = anime.episodes;
+
+    const status = statusTag.dataset.status;
+    const type = typeTag.dataset.type.toLowerCase();
+    
+
+    div.classList = "length__episodes";
+    title.classList = "episodes__title";
+    content.classList = "episodes__content";
+
+    if (status === "airing" || status === "not") {
+
+        if (type === "movie") {
+
+            title.textContent = "Geplante Filmteile:";
+            content.textContent = episodes;
+        
+        } else if (episodes >= 1) {
+
+            title.textContent = "Geplante Folgenanzahl:";
+            content.textContent = episodes;
+
+        } else {
+            title.textContent = "Geplante Menge:";
+            content.textContent = "Keine Angabe.";
+        }
+
+    } else {
+
+        if (type === "movie") {
+
+            title.textContent = "Filmteile:";
+            content.textContent = episodes;
+
+        } else if (episodes >= 1) {
+
+            title.textContent = "Folgenanzahl:";
+            content.textContent = episodes;
+
+        } else {
+            title.textContent = "Geplante Menge:";
+            content.textContent = "Keine Angabe.";
+        }
+    }
+
+    div.appendChild(title);
+    div.appendChild(content);
+
+    return div;
+}
+
+function genresAnimeDetails({genres}) {
+    const div = document.createElement("div");
+    const divTitle = document.createElement("h3");
+    const divContent = document.createElement("div");
+
+    divTitle.textContent = "Genres:"; 
+
+    div.classList = "details__genre";
+    divTitle.classList = "genre__title";
+    divContent.classList = "genre__content";
+    
+    for (let i = 0; i < genres.length; i++) {
+        const element = genres[i];
+        const genre = document.createElement("div");
+        
+        genre.classList = "genre__element";
+
+        genre.dataset.id = element.mal_id;
+        genre.dataset.type = element.type;
+        genre.dataset.name = element.name;
+
+        genre.textContent = element.name;
+
+        divContent.appendChild(genre);
+    }
+
+    div.appendChild(divTitle);
+    div.appendChild(divContent);
+
+    return div;
 }
