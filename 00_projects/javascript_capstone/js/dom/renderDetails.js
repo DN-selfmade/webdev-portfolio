@@ -622,7 +622,7 @@ function synopsisTrailerAnimeDetails({trailer}) {
     divTitle.classList = "trailer__head";
     divVideo.classList = "trailer__container hidden-trailer"; // and visible-trailer for animation with css
 
-    divTitle.innerHTML = '<span id="arrow">&#9654;</span><h3>Trailer</h3>';
+    divTitle.innerHTML = '<span id="arrow">&#9658;;</span><h3>Trailer</h3>';
     
     divVideo.innerHTML = `
     <iframe class="trailer__video"
@@ -643,7 +643,7 @@ function synopsisTrailerAnimeDetails({trailer}) {
 
             divVideo.classList.remove("visible-trailer");
             divVideo.classList.add("hidden-trailer");
-            divTitle.innerHTML = '<span id="arrow">&#9654;</span><h3>Trailer</h3>';
+            divTitle.innerHTML = '<span id="arrow">&#9658;;</span><h3>Trailer</h3>';
             
         }
     });
