@@ -31,4 +31,10 @@ document.addEventListener("DOMContentLoaded", () => {
       watchlogNav.classList.remove("hidden");
       headLogoToggle();
    });
+
+   searchInput.addEventListener("keydown", (e) => {
+      if (e.key === "Enter") {
+         window.location.hash = `search/${searchInput.value}`;
+      }
+   })
 });

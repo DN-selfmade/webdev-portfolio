@@ -42,3 +42,97 @@ export async function getCurrentAnimeMovies(year, maxPages = 2) {
 
     return allMovies.sort((a, b) => new Date(b.aired.from) - new Date(a.aired.from));
 }
+
+export async function getSearchAnimeInput(value = "", maxPages = 1) {
+    let allAnime = [];
+
+    if (!(value === "")) {
+        for (let page = 1; page <= maxPages; page++) {
+            const res = await fetch(`https://api.jikan.moe/v4/anime?q=${value}&sfw=true`);
+            const json = await res.json();
+
+            allAnime = allAnime.concat(json.data);
+
+        if (!json || !json.pagination || !json.data) break;
+        
+        return allAnime
+        .filter(anime => ["Finished Airing", "Currently Airing"].includes(anime.status))
+        .sort((a, b) => new Date(b.aired.from) - new Date(a.aired.from));
+        }
+    }
+
+    return;      
+};
+
+export async function getSearchAnimeType(value, maxPages = 1) {
+    let allAnime = [];
+
+    if (!(value === "")) {
+        for (let page = 1; page <= maxPages; page++) {
+            const res = await fetch(`https://api.jikan.moe/v4/anime?type=${value}&sfw=true`);
+            const json = await res.json();
+
+            allAnime = allAnime.concat(json.data);
+
+        if (!json || !json.pagination || !json.data) break;
+        
+        return allAnime
+        .filter(anime => ["Finished Airing", "Currently Airing"].includes(anime.status))
+        .sort((a, b) => new Date(b.aired.from) - new Date(a.aired.from));
+        }
+    }
+
+    return;      
+};
+
+export async function getSearchAnimeRelease(value, maxPages = 1) {
+    let allAnime = [];
+    const valueArray = value.split("&");
+
+    if (valueArray.length > 1 && !(valueArray[0] === "null")) {
+        const [season, year] = [valueArray[0], valueArray[1]];
+        for (let page = 1; page <= maxPages; page++) {
+            const res = await fetch(`https://api.jikan.moe/v4/seasons/${year}/${season}?sfw=true`);
+            const json = await res.json();
+
+            allAnime = allAnime.concat(json.data);
+
+        if (!json || !json.pagination || !json.data) break;
+        
+        return allAnime
+        .filter(anime => ["Finished Airing", "Currently Airing"].includes(anime.status))
+        .sort((a, b) => new Date(b.aired.from) - new Date(a.aired.from));
+    
+        }
+    } else {
+        
+        allAnime = getCurrentAnimeMovies(value);
+        
+        return allAnime;
+    }  
+     
+    
+
+    return;      
+};
+
+export async function getSearchAnimeGenre(value, maxPages = 1) {
+    let allAnime = [];
+
+     
+    for (let page = 1; page <= maxPages; page++) {
+        const res = await fetch(`https://api.jikan.moe/v4/anime?genres=${value}&sfw`);
+        const json = await res.json();
+
+        allAnime = allAnime.concat(json.data);
+
+    if (!json || !json.pagination || !json.data) break;
+    
+    return allAnime
+    .filter(anime => ["Finished Airing", "Currently Airing"].includes(anime.status))
+    .sort((a, b) => new Date(b.aired.from) - new Date(a.aired.from));
+    
+    }
+
+    return;      
+};
