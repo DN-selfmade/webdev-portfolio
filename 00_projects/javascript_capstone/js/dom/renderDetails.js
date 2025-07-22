@@ -1,5 +1,6 @@
 "use strict"
 import { animeRatingFilterDetails } from "../logic/filter.js";
+import { translateToGerman } from "../api/deepl.js";
 
 // Navigation for details of mediasource by his ID and adding a small delayed click animation.
 export function eventCardUrl() {
@@ -36,6 +37,7 @@ export function renderAnimeDetails(anime) {
     div.appendChild(infoAnimeDetails(anime));
     div.appendChild(lengthAnimeDetails(anime));
     div.appendChild(genresAnimeDetails(anime));
+    div.appendChild(synopsisAnimeDetails(anime));
     
     return div;
 }
@@ -573,6 +575,81 @@ function genresAnimeDetails({genres}) {
 
     div.appendChild(divTitle);
     div.appendChild(divContent);
+
+    return div;
+}
+
+// Creating synopsis part of detail page
+function synopsisAnimeDetails(anime) {
+    const div = document.createElement("div");
+
+    div.classList = "details__synopsis";
+
+    div.appendChild(synopsisTextAnimeDetails(anime));
+    div.appendChild(synopsisTrailerAnimeDetails(anime));
+
+    return div;
+}
+
+// Creating synopsis Content for  Synopsis part of detail page
+function synopsisTextAnimeDetails({synopsis}) {
+    const div = document.createElement("div");
+    const divTitle = document.createElement("h3");
+    const divContent = document.createElement("blockquote");
+
+    div.classList = "synopsis__container";
+    divTitle.classList = "synopsis__title";
+    divContent.classList = "synopsis__content";
+    
+    divTitle.textContent = "Beschreibung:";
+    const text = synopsis//translateToGerman(synopsis);
+    divContent.textContent = text;
+    
+
+    div.appendChild(divTitle);
+    div.appendChild(divContent);
+
+    return div;
+}
+
+// Creating Trailer Content for Synopsis part of detail page
+function synopsisTrailerAnimeDetails({trailer}) {
+    const div = document.createElement("div");
+    const divTitle = document.createElement("div");
+    const divVideo = document.createElement("div");
+
+    div.classList = "synopsis__trailer";
+    divTitle.classList = "trailer__head";
+    divVideo.classList = "trailer__container hidden-trailer"; // and visible-trailer for animation with css
+
+    divTitle.innerHTML = '<span id="arrow">&#9654;</span><h3>Trailer</h3>';
+    
+    divVideo.innerHTML = `
+    <iframe class="trailer__video"
+    width="949" height="534" 
+    src="https://www.youtube-nocookie.com/embed/${trailer.youtube_id}" 
+    frameborder="0" 
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+    referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`;
+
+    divTitle.addEventListener("click", () => {
+        if (divVideo.classList.contains("hidden-trailer")) {
+
+            divVideo.classList.remove("hidden-trailer");
+            divVideo.classList.add("visible-trailer");
+            divTitle.innerHTML = '<span id="arrow">&#9660;</span><h3>Trailer</h3>';
+
+        } else {
+
+            divVideo.classList.remove("visible-trailer");
+            divVideo.classList.add("hidden-trailer");
+            divTitle.innerHTML = '<span id="arrow">&#9654;</span><h3>Trailer</h3>';
+            
+        }
+    });
+
+    div.appendChild(divTitle);
+    div.appendChild(divVideo);
 
     return div;
 }
