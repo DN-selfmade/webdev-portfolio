@@ -48,6 +48,30 @@ export async function handleRoute() {
             main.innerHTML = await res.text();
             await renderWatchlogView();
 
+        } else if (mediaType === "search") {
+            const { renderAnimeSearchInput } = await import("./views/anime.js");
+            res = await fetch(`./view/anime.html`);
+            main.innerHTML = await res.text();
+            await renderAnimeSearchInput(mediaId);
+
+        } else if (mediaType === "type") {
+            const { renderAnimeSearchType } = await import("./views/anime.js");
+            res = await fetch(`./view/anime.html`);
+            main.innerHTML = await res.text();
+            await renderAnimeSearchType(mediaId);
+
+        } else if (mediaType === "release") {
+            const { renderAnimeSearchRelease } = await import("./views/anime.js");
+            res = await fetch(`./view/anime.html`);
+            main.innerHTML = await res.text();
+            await renderAnimeSearchRelease(mediaId);
+
+        } else if (mediaType === "genre") {
+            const { renderAnimeSearchGenre } = await import("./views/anime.js");
+            res = await fetch(`./view/anime.html`);
+            main.innerHTML = await res.text();
+            await renderAnimeSearchGenre(mediaId);
+
         } else if (mediaType === "") {
             window.location.hash = "home";
         }
@@ -83,7 +107,7 @@ export function headLogoToggle() {
     const mediaId = hash.split("/")[1];
     const headLogo = document.getElementById("head_logo");
 
-    if (mediaId === undefined) {
+    if (isNaN(mediaId)) {
         headLogo.classList.add("hidden-logo");
         if (headLogo.classList.contains("hidden")) headLogo.classList.remove("hidden");
     } else {

@@ -72,10 +72,10 @@ function ratingAnimeDetails(anime) {
             info.textContent = `${rating} - Steht für eine empfohlene elternliche Begleitung.`;
         } else if (rating.toUpperCase() === "PG-13") {
             info.textContent = `${rating} - Steht für eine Altersfreigabe ab 13 Jahren.`;
-        } else if (rating.toUpperCase() === "R-17+" || rating.toUpperCase() === "R-17") {
-            info.textContent = `${rating} - Steht für "Nur ab 17 Jahren", beinhaltet Gewalt u.ä..`;
-        } else if (rating.toUpperCase() === "R" || rating.toUpperCase() === "R+") {
-            info.textContent = `${rating} - Steht für "Nur ab 17 Jahren", Gewalt etc. und eventuell milde Nacktheit.`;
+        } else if (rating.toUpperCase() === "R" || rating.toUpperCase() === "R-17") {
+            info.textContent = `${rating} - Steht für "Nur ab 17 Jahren", beinhaltet Gewalt u.ä.`;
+        } else if (rating.toUpperCase() === "R-17+" || rating.toUpperCase() === "R+") {
+            info.textContent = `${rating} - Steht für "Nur ab 17 Jahren", beinhaltet milde Nacktheit.`;
         } else if (rating.toUpperCase() === "RX") {
             info.textContent = `${rating} - Steht für "Erwachseneninhalte", enthält "Hentai".`;
         }
@@ -319,6 +319,10 @@ function typeInfoAnimeDetails({type}) {
     typeTag.classList = "status__type-details";
     typeTag.dataset.type = `${type}`;
 
+    typeTag.addEventListener("click", () => {
+        window.location.hash = `type/${type}`;
+    });
+
     switch (type.toUpperCase()) {
         case "TV":
             typeTag.textContent = `Anime`;
@@ -433,6 +437,14 @@ function seasonInfoAnimeDetails({season, year, aired}) {
                 break;
         }
     }
+    seasonTag.addEventListener("click", () => {
+        if (season === "null") {
+            window.location.hash = `release/${season}&${seasonTag.dataset.year}`;
+        } else {
+            window.location.hash = `release/${seasonTag.dataset.year}`;
+        }
+        
+    })
 
     return seasonTag;
 }
@@ -570,6 +582,10 @@ function genresAnimeDetails({genres}) {
 
         genre.textContent = element.name;
 
+        genre.addEventListener("click", () => {
+            window.location.hash = `genre/${element.mal_id}`;
+        });
+
         divContent.appendChild(genre);
     }
 
@@ -627,10 +643,8 @@ function synopsisTrailerAnimeDetails({trailer}) {
     divVideo.innerHTML = `
     <iframe class="trailer__video"
     width="949" height="534" 
-    src="https://www.youtube-nocookie.com/embed/${trailer.youtube_id}" 
-    frameborder="0" 
-    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-    referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`;
+    src="https://www.youtube-nocookie.com/embed/${trailer.youtube_id}"  
+    allow="accelerometer; autoplay;" allowfullscreen></iframe>`;
 
     divTitle.addEventListener("click", () => {
         if (divVideo.classList.contains("hidden-trailer")) {
@@ -638,13 +652,24 @@ function synopsisTrailerAnimeDetails({trailer}) {
             divVideo.classList.remove("hidden-trailer");
             divVideo.classList.add("visible-trailer");
             divTitle.innerHTML = '<svg id="arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><path d="M137.4 374.6c12.5 12.5 32.8 12.5 45.3 0l128-128c9.2-9.2 11.9-22.9 6.9-34.9s-16.6-19.8-29.6-19.8L32 192c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9l128 128z"/></svg><h3>Trailer</h3>';
+             setTimeout(() => {
+                divVideo.innerHTML = `
+                <iframe class="trailer__video"
+                src="https://www.youtube-nocookie.com/embed/${trailer.youtube_id}"  
+                allow="accelerometer; autoplay;" allowfullscreen></iframe>`;
+            }, 400);
 
         } else {
 
             divVideo.classList.remove("visible-trailer");
             divVideo.classList.add("hidden-trailer");
             divTitle.innerHTML = '<svg id="arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 512"><path d="M246.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-128-128c-9.2-9.2-22.9-11.9-34.9-6.9s-19.8 16.6-19.8 29.6l0 256c0 12.9 7.8 24.6 19.8 29.6s25.7 2.2 34.9-6.9l128-128z"/></svg><h3>Trailer</h3>';
-            
+            setTimeout(() => {
+                divVideo.innerHTML = `
+                <iframe class="trailer__video"
+                src="https://www.youtube-nocookie.com/embed/${trailer.youtube_id}"  
+                allow="accelerometer; autoplay;" allowfullscreen></iframe>`;
+            }, 400);
         }
     });
 
