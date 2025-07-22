@@ -385,5 +385,5 @@ blockquote::after {
 }
 
 #arrow {
-    font-family: "Arial", "Helvetica", sans-serif;
+    height: 1.8rem;
 }
