@@ -289,6 +289,7 @@
 }
 
 .genre__element {
+    flex: 0 0 auto;
     font-size: 1.2rem;
     padding: 0.4rem;
     border: 0.1rem solid var(--color-border);

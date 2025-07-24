@@ -8,10 +8,11 @@ export async function handleRoute() {
     const homeActive = document.getElementById("home_nav");
     const watchlogActive = document.getElementById("watchlog_nav");
     const headLogo = document.getElementById("head_logo");
+    
 
     try {
         let res; 
-
+        headLogo.dataset.status = "";
         if (mediaType === "anime" && mediaId) {
             const { renderAnimeDetailsView } = await import("./views/details.js");
             res = await fetch("./view/details.html");
@@ -107,7 +108,7 @@ export function headLogoToggle() {
     const mediaId = hash.split("/")[1];
     const headLogo = document.getElementById("head_logo");
 
-    if (isNaN(mediaId)) {
+    if (!(headLogo.dataset.status === "details")) {
         headLogo.classList.add("hidden-logo");
         if (headLogo.classList.contains("hidden")) headLogo.classList.remove("hidden");
     } else {
