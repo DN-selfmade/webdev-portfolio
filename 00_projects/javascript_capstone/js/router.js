@@ -80,10 +80,11 @@ export async function handleRoute() {
             res = await fetch(`./view/filter.html`);
             main.innerHTML = await res.text();
 
-        } else if (mediaType === "rating") {
-            const { rating } = await import("./logic/rating.js");
+        } else if (mediaType === "rating" && mediaId) {
+            const { renderRatingView } = await import("./logic/rating.js");
             res = await fetch(`./view/rating.html`);
             main.innerHTML = await res.text();
+            renderRatingView(mediaId);
 
         } else if (mediaType === "") {
             window.location.hash = "home";

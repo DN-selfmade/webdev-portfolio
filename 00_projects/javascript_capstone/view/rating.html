@@ -1,92 +1,276 @@
 <div>
-    <p>Bewertet wird:</p>
-    <h2>TITEL</h2>
+    <h2>Bewertet wird:</h2>
+    <div class="rating__anime">
+        <img class="rating__image" src="https://cdn.myanimelist.net/images/anime/1177/150344l.jpg">
+        <h1 class="rating__title-anime">Kaijuu 8-gou 2nd Season</h1>
+    </div>
 </div>
-<div>
-    <p>Bewertung:</p>
-    <div>
-        <h3>Charakter</h3>
-        <div>
-            <p>0</p>
-            <p>1</p>
-            <p>2</p>
-            <p>3</p>
-            <p>4</p>
-            <p>5</p>
-            <p>6</p>
-            <p>7</p>
-            <p>8</p>
-            <p>9</p>
-            <p>10</p>
+<form class="form" id="rating-form">
+    <div class="rating-status">
+        <input type="radio" name="status" id="seen" value="seen">
+        <label for="seen">Gesehen</label>
+        <input type="radio" name="status" id="watching" value="watching">
+        <label for="watching">Am Schauen</label>
+        <input type="radio" name="status" id="watchlist" value="watchlist">
+        <label for="watchlist">Watchliste</label>
+        <input type="radio" name="status" id="dropped" value="dropped">
+        <label for="dropped">Abgebrochen</label>
+    </div>
+    <div class="hidden rating__value">
+        <h2>Bewertung:</h2>
+        <div class="rating__card">
+            <h3 class="rating__title">Charakter</h3>
+            <div class="rating__score">
+                <label>
+                    <input type="radio" name="character" value="0" hidden>
+                    <span>0</span>
+                </label>
+                <label>
+                    <input type="radio" name="character" value="1" hidden>
+                    <span>1</span>
+                </label>
+                <label>
+                    <input type="radio" name="character" value="2" hidden>
+                    <span>2</span>
+                </label>
+                <label>
+                    <input type="radio" name="character" value="3" hidden>
+                    <span>3</span>
+                </label>
+                <label>
+                    <input type="radio" name="character" value="4" hidden>
+                    <span>4</span>
+                </label>
+                <label>
+                    <input type="radio" name="character" value="5" hidden>
+                    <span>5</span>
+                </label>
+                <label>
+                    <input type="radio" name="character" value="6" hidden>
+                    <span>6</span>
+                </label>
+                <label>
+                    <input type="radio" name="character" value="7" hidden>
+                    <span>7</span>
+                </label>
+                <label>
+                    <input type="radio" name="character" value="8" hidden>
+                    <span>8</span>
+                </label>
+                <label>
+                    <input type="radio" name="character" value="9" hidden>
+                    <span>9</span>
+                </label>
+                <label>
+                    <input type="radio" name="character" value="10" hidden>
+                    <span>10</span>
+                </label>
+            </div>
+        </div>
+        <div class="rating__card">
+            <h3 class="rating__title">Story</h3>
+            <div class="rating__score">
+                <label>
+                    <input type="radio" name="story" value="0" hidden>
+                    <span>0</span>
+                </label>
+                <label>
+                    <input type="radio" name="story" value="1" hidden>
+                    <span>1</span>
+                </label>
+                <label>
+                    <input type="radio" name="story" value="2" hidden>
+                    <span>2</span>
+                </label>
+                <label>
+                    <input type="radio" name="story" value="3" hidden>
+                    <span>3</span>
+                </label>
+                <label>
+                    <input type="radio" name="story" value="4" hidden>
+                    <span>4</span>
+                </label>
+                <label>
+                    <input type="radio" name="story" value="5" hidden>
+                    <span>5</span>
+                </label>
+                <label>
+                    <input type="radio" name="story" value="6" hidden>
+                    <span>6</span>
+                </label>
+                <label>
+                    <input type="radio" name="story" value="7" hidden>
+                    <span>7</span>
+                </label>
+                <label>
+                    <input type="radio" name="story" value="8" hidden>
+                    <span>8</span>
+                </label>
+                <label>
+                    <input type="radio" name="story" value="9" hidden>
+                    <span>9</span>
+                </label>
+                <label>
+                    <input type="radio" name="story" value="10" hidden>
+                    <span>10</span>
+                </label>
+            </div>
+        </div>
+        <div class="rating__card">
+            <h3 class="rating__title">Atmosphäre</h3>
+            <div class="rating__score">
+                <label>
+                    <input type="radio" name="atmosphere" value="0" hidden>
+                    <span>0</span>
+                </label>
+                <label>
+                    <input type="radio" name="atmosphere" value="1" hidden>
+                    <span>1</span>
+                </label>
+                <label>
+                    <input type="radio" name="atmosphere" value="2" hidden>
+                    <span>2</span>
+                </label>
+                <label>
+                    <input type="radio" name="atmosphere" value="3" hidden>
+                    <span>3</span>
+                </label>
+                <label>
+                    <input type="radio" name="atmosphere" value="4" hidden>
+                    <span>4</span>
+                </label>
+                <label>
+                    <input type="radio" name="atmosphere" value="5" hidden>
+                    <span>5</span>
+                </label>
+                <label>
+                    <input type="radio" name="atmosphere" value="6" hidden>
+                    <span>6</span>
+                </label>
+                <label>
+                    <input type="radio" name="atmosphere" value="7" hidden>
+                    <span>7</span>
+                </label>
+                <label>
+                    <input type="radio" name="atmosphere" value="8" hidden>
+                    <span>8</span>
+                </label>
+                <label>
+                    <input type="radio" name="atmosphere" value="9" hidden>
+                    <span>9</span>
+                </label>
+                <label>
+                    <input type="radio" name="atmosphere" value="10" hidden>
+                    <span>10</span>
+                </label>
+            </div>
+        </div>
+        <div class="rating__card">
+            <h3 class="rating__title">Animation</h3>
+            <div class="rating__score">
+                <label>
+                    <input type="radio" name="animation" value="0" hidden>
+                    <span>0</span>
+                </label>
+                <label>
+                    <input type="radio" name="animation" value="1" hidden>
+                    <span>1</span>
+                </label>
+                <label>
+                    <input type="radio" name="animation" value="2" hidden>
+                    <span>2</span>
+                </label>
+                <label>
+                    <input type="radio" name="animation" value="3" hidden>
+                    <span>3</span>
+                </label>
+                <label>
+                    <input type="radio" name="animation" value="4" hidden>
+                    <span>4</span>
+                </label>
+                <label>
+                    <input type="radio" name="animation" value="5" hidden>
+                    <span>5</span>
+                </label>
+                <label>
+                    <input type="radio" name="animation" value="6" hidden>
+                    <span>6</span>
+                </label>
+                <label>
+                    <input type="radio" name="animation" value="7" hidden>
+                    <span>7</span>
+                </label>
+                <label>
+                    <input type="radio" name="animation" value="8" hidden>
+                    <span>8</span>
+                </label>
+                <label>
+                    <input type="radio" name="animation" value="9" hidden>
+                    <span>9</span>
+                </label>
+                <label>
+                    <input type="radio" name="animation" value="10" hidden>
+                    <span>10</span>
+                </label>
+            </div>
+        </div>
+        <div class="rating__card">
+            <h3 class="rating__title">Soundtrack</h3>
+            <div class="rating__score">
+                <label>
+                    <input type="radio" name="music" value="0" hidden>
+                    <span>0</span>
+                </label>
+                <label>
+                    <input type="radio" name="music" value="1" hidden>
+                    <span>1</span>
+                </label>
+                <label>
+                    <input type="radio" name="music" value="2" hidden>
+                    <span>2</span>
+                </label>
+                <label>
+                    <input type="radio" name="music" value="3" hidden>
+                    <span>3</span>
+                </label>
+                <label>
+                    <input type="radio" name="music" value="4" hidden>
+                    <span>4</span>
+                </label>
+                <label>
+                    <input type="radio" name="music" value="5" hidden>
+                    <span>5</span>
+                </label>
+                <label>
+                    <input type="radio" name="music" value="6" hidden>
+                    <span>6</span>
+                </label>
+                <label>
+                    <input type="radio" name="music" value="7" hidden>
+                    <span>7</span>
+                </label>
+                <label>
+                    <input type="radio" name="music" value="8" hidden>
+                    <span>8</span>
+                </label>
+                <label>
+                    <input type="radio" name="music" value="9" hidden>
+                    <span>9</span>
+                </label>
+                <label>
+                    <input type="radio" name="music" value="10" hidden>
+                    <span>10</span>
+                </label>
+            </div>
+        </div>
+        <div class="card-col rating__card">
+            <h3 class="rating__title">Hier dein Kommentar:</h3>
+            <textarea class="rating__comment" name="comment" id="comment" placeholder="Hier dein Kommentar..."></textarea>
+            <div class="rating__watcheddate">
+                <label for="date">Geschaut am:</label>
+                <input type="date" id="date">
+            </div>
         </div>
     </div>
-    <div>
-        <h3>Story</h3>
-        <div>
-            <p>0</p>
-            <p>1</p>
-            <p>2</p>
-            <p>3</p>
-            <p>4</p>
-            <p>5</p>
-            <p>6</p>
-            <p>7</p>
-            <p>8</p>
-            <p>9</p>
-            <p>10</p>
-        </div>
-    </div>
-    <div>
-        <h3>Atmosphere</h3>
-        <div>
-            <p>0</p>
-            <p>1</p>
-            <p>2</p>
-            <p>3</p>
-            <p>4</p>
-            <p>5</p>
-            <p>6</p>
-            <p>7</p>
-            <p>8</p>
-            <p>9</p>
-            <p>10</p>
-        </div>
-    </div>
-    <div>
-        <h3>Irgendwas</h3>
-        <div>
-            <p>0</p>
-            <p>1</p>
-            <p>2</p>
-            <p>3</p>
-            <p>4</p>
-            <p>5</p>
-            <p>6</p>
-            <p>7</p>
-            <p>8</p>
-            <p>9</p>
-            <p>10</p>
-        </div>
-    </div>
-    <div>
-        <h3>Sound</h3>
-        <div>
-            <p>0</p>
-            <p>1</p>
-            <p>2</p>
-            <p>3</p>
-            <p>4</p>
-            <p>5</p>
-            <p>6</p>
-            <p>7</p>
-            <p>8</p>
-            <p>9</p>
-            <p>10</p>
-        </div>
-    </div>
-    <div>
-        <p>Hier dein Kommentar:</p>
-        <input type="text">
-    </div>
-    <button>Speichern</button>
-</div>
+    <button id="submit-btn">Speichern</button>
+</form>

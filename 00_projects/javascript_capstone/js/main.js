@@ -36,5 +36,10 @@ document.addEventListener("DOMContentLoaded", () => {
       if (e.key === "Enter") {
          window.location.hash = `search/${searchInput.value}`;
       }
-   })
+   });
+
+   headLogo.addEventListener("click", () => {
+      const [mediaType, mediaId] = window.location.hash.split("/");
+      window.location.hash = `rating/${mediaId}`;
+   });
 });

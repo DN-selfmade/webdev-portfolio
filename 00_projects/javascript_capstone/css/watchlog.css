@@ -17,7 +17,7 @@
     align-items: center;
     margin: 0.2rem;
     width: 3rem;
-    margin-left: 0.5rem;
+    margin-left: auto;
 }
 .card__watchlog[data-status="watching"] {
     background-color: var(--status-watching);
