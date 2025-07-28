@@ -79,3 +79,7 @@ export async function renderAnimeSearchGenre(value) {
         container.appendChild(card);
     };
 };
+
+function nextPage() {
+    
+}

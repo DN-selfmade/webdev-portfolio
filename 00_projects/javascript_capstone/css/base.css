@@ -33,13 +33,13 @@ html {
     font-size: 0.625em;
     font-family: var(--font-family);
     color: var(--color-text);
+    background-color: var(--color-bg-layout);
 }
 
 body {
     margin: 0;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
     min-height: 100vh;
     background-color: var(--color-bg);
 }
@@ -57,4 +57,9 @@ html, body {
 .hidden-logo {
     display: none;
     opacity: 0;
+}
+
+#main {
+    flex: 1;
+    margin-top: 1rem
 }

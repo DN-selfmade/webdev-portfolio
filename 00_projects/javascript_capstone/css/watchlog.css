@@ -1,0 +1,152 @@
+.card__watchlog {
+    display: flex;
+    justify-content: space-between;
+    gap: 0.2rem;
+    height: 10rem;
+    margin: 0.2rem;
+    padding: 0.2rem;
+    border: 0.1rem solid var(--color-border);
+    border-radius: 0.3rem;
+    background-color: var(--color-bg-layout);
+}
+
+.watchlog__status {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    margin: 0.2rem;
+    width: 3rem;
+    margin-left: auto;
+}
+.card__watchlog[data-status="watching"] {
+    background-color: var(--status-watching);
+}
+
+.card__watchlog[data-status="seen"] {
+    background-color: var(--status-seen);
+}
+
+.card__watchlog[data-status="dropped"] {
+    background-color: var(--status-dropped);
+}
+
+.card__watchlog[data-status="watchlist"] {
+    background-color: var(--status-watchlist);
+}
+
+.watchlog__score {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2rem;
+    width: 3rem;
+}
+
+.watched__counter {
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: center;
+    align-items: center;
+    margin-top: 0.2rem;
+    flex: 0 0 auto;
+}
+
+.watchlog__operator {
+    border: 0.1rem solid var(--color-border);
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-top: 0.5rem;
+    border-radius: 0.5rem;
+    box-shadow: 0.2rem 0.2rem 0.2rem var(--color-shadow);
+    padding: 0.5rem;
+    background-color: var(--color-bg-layout);
+}
+
+.watchlog__rewatch {
+    font-size: 1.2rem;
+}
+
+.watchlog__image {
+    margin: 0.2rem;
+
+}
+
+.watchlog__title {
+    font-size: 1.1rem;
+    width: 20rem;
+}
+
+.watchlog__type {
+    background-color: var(--color-bg);
+    display: flex;
+    width: 3.5rem;
+    padding: 0 0.3rem 0 0.3rem;
+    margin: 0.2rem;
+    justify-content: center;
+    align-items: center;
+    flex: 0 0 auto;
+}
+
+.watchlog__release {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 0 0 auto;
+    width: 5rem;
+    padding: 0 0.3rem 0 0.3rem;
+    margin: 0.2rem;
+}
+
+.watchlog__watched {
+    background-color: var(--color-bg);
+    width: 5rem;
+    padding: 0 0.3rem 0 0.3rem;
+    margin: 0.2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 0 0 auto;
+}
+
+.watchlog__anime {
+    display: flex;
+    width: 50%;
+}
+
+.watchlog__info {
+    display: flex;
+    width: 50%;
+}
+
+.filer__options {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    font-size: 1.2rem;
+    margin: 0 0 1rem 0;
+}
+
+.filter__option {
+    border: 0.1rem solid var(--color-border);
+    border-radius: 0.6rem;    
+    padding: 0.5rem;
+    box-shadow: 0.2rem 0.2rem 0.5rem var(--color-shadow);
+}
+
+.option-active {
+    transform: translate(1.2);
+    box-shadow: none;
+    font-weight: bold;
+}
+
+.watchlog__options, .watchlog__delete {
+    font-size: 1.6rem;
+    padding: 0.8rem;
+    margin: 0;
+}
+
+.watchlog__delete {
+    color: red;
+}

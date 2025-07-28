@@ -1,9 +1,9 @@
 "use strict"
 
-export async function getCurrentAnime(maxPages = 1) {
+export async function getCurrentAnime(nextPage = 1, maxPages = 1) {
     let allAnime = [];
 
-    for (let page = 1; page <= maxPages; page++) {
+    for (let page = nextPage; page <= maxPages; page++) {
         const res = await fetch(`https://api.jikan.moe/v4/seasons/now?page=${page}`);
         const json = await res.json();
 
