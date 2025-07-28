@@ -286,6 +286,10 @@
 #submit-btn {
     width: 12rem;
     height: 3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.4rem;
     background-color: var(--color-bg-layout);
     border: 0.1rem solid var(--color-border);
     border-radius: 0.6rem;
