@@ -12,10 +12,12 @@ export async function handleRoute() {
 
     try {
         let res; 
+
         headLogo.dataset.status = "";
         if (mediaType === "anime" && mediaId) {
             const { renderAnimeDetailsView } = await import("./views/details.js");
             res = await fetch("./view/details.html");
+            
             main.innerHTML = await res.text();
             await renderAnimeDetailsView(mediaType, mediaId);
 
@@ -47,7 +49,7 @@ export async function handleRoute() {
             const { renderWatchlogView } = await import("./views/watchlog.js");
             res = await fetch(`./view/${hash}.html`);
             main.innerHTML = await res.text();
-            await renderWatchlogView();
+            //await renderWatchlogView();
 
         } else if (mediaType === "search") {
             const { renderAnimeSearchInput } = await import("./views/anime.js");
@@ -72,6 +74,16 @@ export async function handleRoute() {
             res = await fetch(`./view/anime.html`);
             main.innerHTML = await res.text();
             await renderAnimeSearchGenre(mediaId);
+
+        } else if (mediaType === "filter") {
+            const { filter } = await import("./logic/filter.js");
+            res = await fetch(`./view/filter.html`);
+            main.innerHTML = await res.text();
+
+        } else if (mediaType === "rating") {
+            const { rating } = await import("./logic/rating.js");
+            res = await fetch(`./view/rating.html`);
+            main.innerHTML = await res.text();
 
         } else if (mediaType === "") {
             window.location.hash = "home";
