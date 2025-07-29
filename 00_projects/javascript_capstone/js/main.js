@@ -2,7 +2,14 @@
 import { handleRoute, headLogoToggle } from "./router.js";
 
 document.addEventListener("DOMContentLoaded", () => {
-
+   
+   const storageCheck = JSON.parse(localStorage.getItem("myAnimeData"));
+   console.log(storageCheck)
+   
+   if (storageCheck === null) {
+      alert('Hallo und herzlich Willkommen!\nDieser Watchlog funktioniert nur auf einem Gerät und ist nur für Handys entwickelt.\nUm also bestmögliche UX nutze diese Seite bitte auf einem Handy.\nDu kannst wenn du "clearlocalstorage" am # in der URL anhängst deinen Speicherstand löschen!\nDiese Meldung taucht nicht mehr auf sobald du dem "watchlog" ein Element hinzufügst.\nAber jetzt erstmal viel spaß beim Erkunden!')
+   }
+   
    const searchBtn = document.getElementById("search-btn");
    const searchInput = document.getElementById("search-txt");
    const navbar = document.querySelector(".navbar");

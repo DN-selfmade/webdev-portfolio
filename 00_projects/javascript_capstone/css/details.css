@@ -84,12 +84,6 @@
 #watchCounter {
     font-size: 1.4rem;
     font-weight: Bold;
-    width: 5rem;
-    height: 5rem;
-    margin: 2rem 1rem;
-    border: 0.2rem solid var(--color-border);
-    border-radius: 0.6rem;
-    box-shadow: 0 0.1rem 0.1rem 0.1rem var(--color-shadow);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -152,8 +146,8 @@
 
 .info__score {
     font-size: 1.2rem;
-    width: 5rem;
-    height: 2.5rem;
+    width: 6rem;
+    height: 3rem;
     border: 0.1rem solid var(--color-border);
     border-radius: 0.6rem;
     box-shadow: 0.1rem 0.1rem 0.1rem var(--color-shadow);
@@ -392,4 +386,43 @@ blockquote::after {
 .trailer__container.visible-trailer {
   max-height: none;
   height: auto;
+}
+
+.details__comment {
+    border: 0.1rem solid var(--color-border);
+    border-radius: 0.6rem;
+    width: 90vw;
+    margin: 0 auto 1rem auto;
+    background-color: var(--color-bg-layout);
+    padding: 1rem;
+}
+
+.comment__title {
+    margin: 0 0 1rem 0;
+    font-size: 1.4rem;
+    padding: 0;
+}
+
+.comment__content {
+    text-align: center;
+    padding: 0.5rem 0.5rem;
+    font-size: 1.15rem;
+    font-style: italic;
+    margin: 0;
+    background-color: var(--color-bg);
+    border-radius: 0.6rem;
+}
+
+.watchCounter__container {
+    font-size: 1.2rem;
+    width: 5rem;
+    height: 5rem;
+    margin: 2rem 1rem;
+    border: 0.2rem solid var(--color-border);
+    border-radius: 0.6rem;
+    box-shadow: 0 0.1rem 0.1rem 0.1rem var(--color-shadow);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 0 0 auto;
 }

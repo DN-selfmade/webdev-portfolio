@@ -9,7 +9,6 @@ export async function renderAnimeDetailsView(mediatype, mediaId) {
     headLogo.dataset.status = "details";
     const animeById = await getAnimeById(mediatype, mediaId);
 
-    console.log(animeById);
 
     const anime = await renderAnimeDetails(animeById);
 

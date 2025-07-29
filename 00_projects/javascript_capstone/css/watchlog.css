@@ -70,7 +70,8 @@
 
 .watchlog__image {
     margin: 0.2rem;
-
+    height: 9rem;
+    width: 6.3rem;
 }
 
 .watchlog__title {
@@ -81,7 +82,7 @@
 .watchlog__type {
     background-color: var(--color-bg);
     display: flex;
-    width: 3.5rem;
+    width: 4.5rem;
     padding: 0 0.3rem 0 0.3rem;
     margin: 0.2rem;
     justify-content: center;
@@ -93,6 +94,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    text-align: center;
     flex: 0 0 auto;
     width: 5rem;
     padding: 0 0.3rem 0 0.3rem;
@@ -104,6 +106,7 @@
     width: 5rem;
     padding: 0 0.3rem 0 0.3rem;
     margin: 0.2rem;
+    text-align: center;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -120,22 +123,22 @@
     width: 50%;
 }
 
-.filer__options {
+.filter__options {
     display: flex;
     justify-content: space-around;
     align-items: center;
     font-size: 1.2rem;
-    margin: 0 0 1rem 0;
+    margin: 1rem 0 2rem 0;
 }
 
-.filter__option {
+.filter__options label span {
     border: 0.1rem solid var(--color-border);
     border-radius: 0.6rem;    
     padding: 0.5rem;
     box-shadow: 0.2rem 0.2rem 0.5rem var(--color-shadow);
 }
 
-.option-active {
+.filter__options input[name='filter']:checked + span {
     transform: translate(1.2);
     box-shadow: none;
     font-weight: bold;
@@ -149,4 +152,10 @@
 
 .watchlog__delete {
     color: red;
+}
+
+.watchlog__list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
 }

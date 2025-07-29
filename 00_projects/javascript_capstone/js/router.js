@@ -1,14 +1,19 @@
 "use strict"
 import { eventCardUrl } from "./dom/renderDetails.js";
+export let hashType;
+export let hashId;
 
 export async function handleRoute() {
     const hash = window.location.hash.slice(1);
-    const [mediaType, mediaId] = hash.split("/");
+    const [mediaTypePage, mediaId] = hash.split("/");
+    const [mediaType, page] = mediaTypePage.split("&")
     const main = document.getElementById("main");
     const homeActive = document.getElementById("home_nav");
     const watchlogActive = document.getElementById("watchlog_nav");
     const headLogo = document.getElementById("head_logo");
-    
+    navbarActiveToggle(mediaType, homeActive, watchlogActive);
+    hashType = mediaType;
+    hashId = mediaId;
 
     try {
         let res; 
@@ -23,9 +28,9 @@ export async function handleRoute() {
 
         } else if (mediaType === "anime") {
             const { renderAnimeView } = await import("./views/anime.js");
-            res = await fetch(`./view/${hash}.html`);
+            res = await fetch(`./view/${mediaType}.html`);
             main.innerHTML = await res.text();
-            await renderAnimeView();
+            await renderAnimeView(page);
 
         } else if (mediaType === "movie" && mediaId) {
             const { renderAnimeDetailsView } = await import("./views/details.js");
@@ -37,7 +42,7 @@ export async function handleRoute() {
             const { renderMovieAnimeView } = await import("./views/anime.js");
             res = await fetch(`./view/anime.html`);
             main.innerHTML = await res.text();
-            await renderMovieAnimeView();
+            await renderMovieAnimeView(page);
 
         } else if (mediaType === "home") {
             const { renderIndexView } = await import("./views/home.js");
@@ -49,36 +54,49 @@ export async function handleRoute() {
             const { renderWatchlogView } = await import("./views/watchlog.js");
             res = await fetch(`./view/${hash}.html`);
             main.innerHTML = await res.text();
-            //await renderWatchlogView();
+            renderWatchlogView();
 
         } else if (mediaType === "search") {
             const { renderAnimeSearchInput } = await import("./views/anime.js");
             res = await fetch(`./view/anime.html`);
             main.innerHTML = await res.text();
-            await renderAnimeSearchInput(mediaId);
+            await renderAnimeSearchInput(mediaId, page);
 
         } else if (mediaType === "type") {
             const { renderAnimeSearchType } = await import("./views/anime.js");
             res = await fetch(`./view/anime.html`);
             main.innerHTML = await res.text();
-            await renderAnimeSearchType(mediaId);
+            await renderAnimeSearchType(mediaId, page);
 
         } else if (mediaType === "release") {
             const { renderAnimeSearchRelease } = await import("./views/anime.js");
             res = await fetch(`./view/anime.html`);
             main.innerHTML = await res.text();
-            await renderAnimeSearchRelease(mediaId);
+            await renderAnimeSearchRelease(mediaId, page);
 
         } else if (mediaType === "genre") {
             const { renderAnimeSearchGenre } = await import("./views/anime.js");
             res = await fetch(`./view/anime.html`);
             main.innerHTML = await res.text();
-            await renderAnimeSearchGenre(mediaId);
+            await renderAnimeSearchGenre(mediaId, page);
+
+        } else if (mediaType === "top") {
+            const { renderAnimeSearchTop } = await import("./views/anime.js");
+            res = await fetch(`./view/anime.html`);
+            main.innerHTML = await res.text();
+            await renderAnimeSearchTop(page);
+
+        } else if (mediaType === "upcoming") {
+            const { renderAnimeSearchUpcoming } = await import("./views/anime.js");
+            res = await fetch(`./view/anime.html`);
+            main.innerHTML = await res.text();
+            await renderAnimeSearchUpcoming(page);
 
         } else if (mediaType === "filter") {
             const { filter } = await import("./logic/filter.js");
             res = await fetch(`./view/filter.html`);
             main.innerHTML = await res.text();
+            filter();
 
         } else if (mediaType === "rating" && mediaId) {
             const { renderRatingView } = await import("./logic/rating.js");
@@ -88,6 +106,8 @@ export async function handleRoute() {
 
         } else if (mediaType === "") {
             window.location.hash = "home";
+        } else if (mediaType === "clearlocalstorage") {
+            localStorage.clear();
         }
 
         eventCardUrl();
@@ -96,7 +116,7 @@ export async function handleRoute() {
         main.innerHTML = "<p>View konnte nicht geladen werden.</p>";
         console.error("Fehler beim Laden des Views:", err);
     }
-    navbarActiveToggle(mediaType, homeActive, watchlogActive);
+    
     headLogoToggle();
 }
 
@@ -112,6 +132,9 @@ function navbarActiveToggle(mediaType, homeActive, watchlogActive) {
         homeActive.classList.remove("active__nav");
     } else if (!(mediaType === "watchlog")) {
         watchlogActive.classList.remove("active__nav");
+    } else {
+        homeActive.classList.remove("acitve__nav");
+        watchlogActive.classList.remove("active__nav");
     }
 };
 
@@ -121,7 +144,7 @@ export function headLogoToggle() {
     const mediaId = hash.split("/")[1];
     const headLogo = document.getElementById("head_logo");
 
-    if (!(headLogo.dataset.status === "details")) {
+    if (!(headLogo.dataset.status === "details" || headLogo.dataset.status === "seen" || headLogo.dataset.status === "watching" || headLogo.dataset.status === "watchlist" || headLogo.dataset.status === "dropped")) {
         headLogo.classList.add("hidden-logo");
         if (headLogo.classList.contains("hidden")) headLogo.classList.remove("hidden");
     } else {
