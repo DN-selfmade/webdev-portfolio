@@ -69,6 +69,7 @@
 .num__page-left, .num__page-right {
     flex: 0 0 auto;
     width: 12rem;
+    display: flex;
 }
 
 .btw {
