@@ -52,8 +52,9 @@
 
 .pageList__pages {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
+    gap: 2rem;
     font-size: 1.6rem;
 
 }
@@ -62,8 +63,18 @@
     display: flex;
     justify-content: space-around;
     gap: 1.5rem;
+    flex: 0 0 auto;
+}
+
+.num__page-left, .num__page-right {
+    flex: 0 0 auto;
+    width: 12rem;
 }
 
 .btw {
     font-weight: bold;
+}
+
+.hidden-pageArrow {
+    opacity: 0;
 }

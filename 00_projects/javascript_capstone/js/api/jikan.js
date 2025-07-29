@@ -1,18 +1,18 @@
 "use strict"
+export let currentPage;
+export let lastPage;
 
-export async function getCurrentAnime(nextPage = 1, maxPages = 1) {
-    let allAnime = [];
+export async function getCurrentAnime(page = 1) {
 
-    for (let page = nextPage; page <= maxPages; page++) {
-        const res = await fetch(`https://api.jikan.moe/v4/seasons/now?page=${page}`);
-        const json = await res.json();
+    const res = await fetch(`https://api.jikan.moe/v4/seasons/now?page=${page}`);
+    const json = await res.json();
 
-        allAnime = allAnime.concat(json.data);
 
-        if (!json || !json.pagination || !json.data) break;
-    }
+    if (!json || !json.pagination || !json.data) return [];
+    currentPage = json.pagination.current_page;
+    lastPage = json.pagination.last_visible_page;
 
-    return allAnime
+    return json.data
         .filter(anime => ["Finished Airing", "Currently Airing"].includes(anime.status))
         .sort((a, b) => new Date(b.aired.from) - new Date(a.aired.from));
 };
@@ -24,115 +24,140 @@ export async function getAnimeById(mediaType, mediaId) {
     return json.data;
 };
 
-export async function getCurrentAnimeMovies(year, maxPages = 2) {
+export async function getCurrentAnimeMovies(year, page = 1) {
     let allMovies = [];
 
-    for (let page = 1; page <= maxPages; page++) {
-        const res = await fetch(`https://api.jikan.moe/v4/anime?type=movie&start_date=${year}-01-01&page=${page}`);
-        const json = await res.json();
-        const movies = json.data.filter(anime =>
-            ["Finished Airing", "Currently Airing"].includes(anime.status)
-            && anime.aired?.from && !isNaN(new Date(anime.aired.from))
-        );
 
-        allMovies = allMovies.concat(movies);
+    const res = await fetch(`https://api.jikan.moe/v4/anime?type=movie&start_date=${year}-01-01&page=${page}`);
+    const json = await res.json();
+    const movies = json.data
 
-        if (!json.pagination.has_next_page) break;
-    }
+    allMovies = allMovies.concat(movies);
 
-    return allMovies.sort((a, b) => new Date(b.aired.from) - new Date(a.aired.from));
+    if (!json.pagination.has_next_page) return;
+
+    currentPage = json.pagination.current_page;
+    lastPage = json.pagination.last_visible_page;
+
+    return allMovies
 }
 
-export async function getSearchAnimeInput(value = "", maxPages = 1) {
+export async function getSearchAnimeInput(value = "", page = 1) {
     let allAnime = [];
 
-    if (!(value === "")) {
-        for (let page = 1; page <= maxPages; page++) {
-            const res = await fetch(`https://api.jikan.moe/v4/anime?q=${value}&sfw=true`);
-            const json = await res.json();
 
-            allAnime = allAnime.concat(json.data);
+    const res = await fetch(`https://api.jikan.moe/v4/anime?q=${value}&sfw=true&page=${page}`);
+    const json = await res.json();
 
-        if (!json || !json.pagination || !json.data) break;
-        
-        return allAnime
-        .filter(anime => ["Finished Airing", "Currently Airing"].includes(anime.status))
-        .sort((a, b) => new Date(b.aired.from) - new Date(a.aired.from));
-        }
-    }
+    allAnime = allAnime.concat(json.data);
 
-    return;      
+    if (!json || !json.pagination || !json.data) return;
+
+    currentPage = json.pagination.current_page;
+    lastPage = json.pagination.last_visible_page;
+    
+    return allAnime
+    .filter(anime => ["Finished Airing", "Currently Airing"].includes(anime.status))
+    .sort((a, b) => new Date(b.aired.from) - new Date(a.aired.from));
+            
 };
 
-export async function getSearchAnimeType(value, maxPages = 1) {
+export async function getSearchAnimeType(value, page = 1) {
     let allAnime = [];
 
-    if (!(value === "")) {
-        for (let page = 1; page <= maxPages; page++) {
-            const res = await fetch(`https://api.jikan.moe/v4/anime?type=${value}&sfw=true`);
-            const json = await res.json();
+    const res = await fetch(`https://api.jikan.moe/v4/anime?type=${value}&sfw=true&page=${page}`);
+    const json = await res.json();
 
-            allAnime = allAnime.concat(json.data);
+    allAnime = allAnime.concat(json.data);
 
-        if (!json || !json.pagination || !json.data) break;
-        
-        return allAnime
-        .filter(anime => ["Finished Airing", "Currently Airing"].includes(anime.status))
-        .sort((a, b) => new Date(b.aired.from) - new Date(a.aired.from));
-        }
-    }
+    if (!json || !json.pagination || !json.data) return;
 
-    return;      
+    currentPage = json.pagination.current_page;
+    lastPage = json.pagination.last_visible_page;
+    
+    return allAnime
+    .filter(anime => ["Finished Airing", "Currently Airing"].includes(anime.status))
+    .sort((a, b) => new Date(b.aired.from) - new Date(a.aired.from));
+            
 };
 
-export async function getSearchAnimeRelease(value, maxPages = 1) {
+export async function getSearchAnimeRelease(value, page = 1) {
     let allAnime = [];
     const valueArray = value.split("&");
 
     if (valueArray.length > 1 && !(valueArray[0] === "null")) {
         const [season, year] = [valueArray[0], valueArray[1]];
-        for (let page = 1; page <= maxPages; page++) {
-            const res = await fetch(`https://api.jikan.moe/v4/seasons/${year}/${season}?sfw=true`);
+        
+            const res = await fetch(`https://api.jikan.moe/v4/seasons/${year}/${season}?sfw=true&page=${page}`);
             const json = await res.json();
 
             allAnime = allAnime.concat(json.data);
 
-        if (!json || !json.pagination || !json.data) break;
-        
+        if (!json || !json.pagination || !json.data) return;
+
+        currentPage = json.pagination.current_page;
+        lastPage = json.pagination.last_visible_page;
+
         return allAnime
         .filter(anime => ["Finished Airing", "Currently Airing"].includes(anime.status))
         .sort((a, b) => new Date(b.aired.from) - new Date(a.aired.from));
     
-        }
+        
     } else {
         
-        allAnime = getCurrentAnimeMovies(value);
+        allAnime = getCurrentAnimeMovies(value, page);
         
         return allAnime;
-    }  
-     
-    
-
-    return;      
+    }     
 };
 
-export async function getSearchAnimeGenre(value, maxPages = 1) {
+export async function getSearchAnimeGenre(value, page = 1) {
     let allAnime = [];
 
      
-    for (let page = 1; page <= maxPages; page++) {
-        const res = await fetch(`https://api.jikan.moe/v4/anime?genres=${value}&sfw`);
+    
+        const res = await fetch(`https://api.jikan.moe/v4/top/anime?genres=${value}&sfw&page=${page}`);
         const json = await res.json();
 
         allAnime = allAnime.concat(json.data);
 
-    if (!json || !json.pagination || !json.data) break;
+    if (!json || !json.pagination || !json.data) return;
+    currentPage = json.pagination.current_page;
+    lastPage = json.pagination.last_visible_page;
     
     return allAnime
     .filter(anime => ["Finished Airing", "Currently Airing"].includes(anime.status))
-    .sort((a, b) => new Date(b.aired.from) - new Date(a.aired.from));
-    
-    }
+    .sort((a, b) => new Date(b.aired.from) - new Date(a.aired.from));      
+};
 
-    return;      
+export async function getSearchAnimeTop(page = 1) {
+    let allAnime = [];
+
+    const res = await fetch(`https://api.jikan.moe/v4/top/anime?page=${page}`);
+    const json = await res.json();
+
+    allAnime = allAnime.concat(json.data);
+
+    if (!json || !json.pagination || !json.data) return;
+    currentPage = json.pagination.current_page;
+    lastPage = json.pagination.last_visible_page;
+
+    return allAnime
+        .filter(anime => ["Finished Airing", "Currently Airing"].includes(anime.status))
+        .sort((a, b) => new Date(b.aired.from) - new Date(a.aired.from));
+};
+
+export async function getSearchAnimeUpcoming(page = 1) {
+    let allAnime = [];
+
+    const res = await fetch(`https://api.jikan.moe/v4/seasons/upcoming?page=${page}`);
+    const json = await res.json();
+
+    allAnime = allAnime.concat(json.data);
+
+    if (!json || !json.pagination || !json.data) return;
+    currentPage = json.pagination.current_page;
+    lastPage = json.pagination.last_visible_page;
+
+    return allAnime
 };

@@ -1,6 +1,6 @@
 "use strict"
 import { animeRatingFilterDetails } from "../logic/filter.js";
-import { translateToGerman } from "../api/deepl.js";
+import { getStorageAnimeById } from "../storage/watchlog.js";
 
 // Navigation for details of mediasource by his ID and adding a small delayed click animation.
 export function eventCardUrl() {
@@ -21,35 +21,46 @@ export function eventCardUrl() {
 }
 
 // Creating the Content of a detail page
-export function renderAnimeDetails(anime) {
+export async function renderAnimeDetails(anime) {
     const div = document.createElement("div");
     const head = document.createElement("div");
+    const headLogo = document.getElementById("head_logo");
     head.classList = "info__head";
     div.className = "anime__info";
     div.dataset.value = anime.mal_id;
     div.dataset.text = "anime";
     div.dataset.status = "";
     
-    head.appendChild(titleAnimeDetails(anime));
+    head.appendChild(await titleAnimeDetails(anime));
     head.appendChild(subTitlesAnime(anime));
     div.appendChild(head);
-    div.appendChild(showAnimeDetails(anime));
+    div.appendChild(await showAnimeDetails(anime));
     div.appendChild(infoAnimeDetails(anime));
     div.appendChild(lengthAnimeDetails(anime));
     div.appendChild(genresAnimeDetails(anime));
     div.appendChild(synopsisAnimeDetails(anime));
     
+    const storageAnime = getStorageAnimeById(anime.mal_id);
+    if (storageAnime) {
+        headLogo.dataset.status = storageAnime.status;
+
+        if(storageAnime.status === "seen") {
+            const comment = commentAnimeRating(storageAnime);
+            div.appendChild(comment);
+        }
+    }
+
     return div;
 }
 
 // Creating the first DOM-Tag of a Anime-detail page.
-function titleAnimeDetails(anime) {
+async function titleAnimeDetails(anime) {
     const title = document.createElement("div");
     title.classList = "anime__head";
 
     title.appendChild(ratingAnimeDetails(anime));
     title.appendChild(hTitleAnimeDetails(anime));
-    title.appendChild(watchCounter());
+    title.appendChild(await watchCounter(anime));
 
     return title;
 }
@@ -188,19 +199,54 @@ function subTitlesAnime(anime) {
 }
 
 // Creating WatchCounter-Tag.
-function watchCounter() {
+async function watchCounter(anime) {
+    const div = document.createElement("div");
     const watchCounter = document.createElement("div");
+    const storageAnime = await getStorageAnimeById(anime.mal_id)
+    const info = document.createElement("div");
+
+    div.classList = "watchCounter__container hidden-logo"
+    info.classList = "score__description hidden";
+    info.textContent = "Hier steht wie oft du bereits diesen Anime geschaut hast.";
 
     watchCounter.id = "watchCounter";
-    watchCounter.classList = "hidden-logo";
 
-    watchCounter.textContent = "";
+    if (storageAnime) {
+        if (storageAnime.status === "seen") {
+        watchCounter.textContent = storageAnime.rewatchCount;
+        div.classList.remove("hidden-logo")
+        div.addEventListener("click", (event) => {
+            const x = event.pageX;
+            const y = event.pageY;
 
-    return watchCounter;
+            info.style.left = `${x - 10}px`;
+            info.style.top = `${y}px`;
+            info.style.transform = "translateX(-100%)";
+            
+            info.classList.remove("hidden");
+            
+            setTimeout(() => info.classList.add("hidden"), 4000);
+        });
+        div.appendChild(watchCounter);
+        div.appendChild(info);
+        
+        } else {
+            watchCounter.classList = "hidden-logo";
+            watchCounter.textContent = "";
+        }
+        
+    } else {
+
+        watchCounter.classList = "hidden-logo";
+        watchCounter.textContent = "";
+    }
+    
+
+    return div;
 }
 
 // Creating a Show-DOM-tags of anime-detail page
-function showAnimeDetails(anime) {
+async function showAnimeDetails(anime) {
     const show = document.createElement("div");
     const imgDiv = document.createElement("div");
     const image = document.createElement("img");
@@ -215,7 +261,17 @@ function showAnimeDetails(anime) {
     const sourceList = document.createElement("ul");
     const sourceContent = document.createElement("li");
 
-    const ourScore = 0;                                // Change this for Watchlog later
+    const storageAnime = await getStorageAnimeById(anime.mal_id); 
+    let ourScore;
+    
+    if (storageAnime) {
+        if (storageAnime.status === "seen") {
+            ourScore = storageAnime.extras.score;
+        }
+        ourScore = "-";
+    } else {
+        ourScore = "-";
+    }                     
 
     imgDiv.classList = "image__detail";
     show.classList = "show__detail";
@@ -675,6 +731,24 @@ function synopsisTrailerAnimeDetails({trailer}) {
 
     div.appendChild(divTitle);
     div.appendChild(divVideo);
+
+    return div;
+}
+
+function commentAnimeRating(anime) {
+    const div = document.createElement("div");
+    const comment = document.createElement("div");
+    const title = document.createElement("h3");
+
+    div.classList = "details__comment";
+    comment.classList = "comment__content";
+    title.classList = "comment__title";
+
+    title.textContent = "Kommentar:"
+    comment.textContent = anime.extras.comment;
+
+    div.appendChild(title);
+    div.appendChild(comment);
 
     return div;
 }

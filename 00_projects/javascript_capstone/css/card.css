@@ -63,14 +63,14 @@
 }
 
 .media__card[data-status="watchlist"]{
-    border: 0.3rem solid var(--status-watchlist);
+    border: 0.5rem solid var(--status-watchlist);
 }
 .media__card[data-status="seen"] {
-    border: 0.3rem solid var(--status-seen);
+    border: 0.5rem solid var(--status-seen);
 }
 .media__card[data-status="watching"] {
-    border: 0.3rem solid var(--status-watching);
+    border: 0.5rem solid var(--status-watching);
 }
 .media__card[data-status="dropped"] {
-    border: 0.3rem solid var(--status-dropped);
+    border: 0.5rem solid var(--status-dropped);
 }
